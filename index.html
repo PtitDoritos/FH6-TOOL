@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#ff4500">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PtitDoritos Dynamics - FH6 Tune Calculator</title>
+
+    <!-- INTEGRATION PWA / APPLICATION MOBILE -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff4500">
+
     <style>
         :root {
             --bg-color: #0b0c0e;
@@ -442,12 +445,12 @@
             aeroText = `AV: ${frontVal}<br>AR: ${rearVal}`;
         }
 
-        // 4. RESSORTS (Adaptés si Aéro présente pour éviter le talonnage)
+        // 4. RESSORTS (Adaptés si Aéro présente)
         let springAvCalc = ((springAvMax - springAvMin) * biasAv + springAvMin);
         let springArCalc = ((springArMax - springArMin) * biasAr + springArMin);
 
-        if (aeroFront === 'Yes') springAvCalc *= 1.05; // Affermit l'avant sous appui
-        if (aeroRear === 'Yes') springArCalc *= 1.05;  // Affermit l'arrière sous appui
+        if (aeroFront === 'Yes') springAvCalc *= 1.05;
+        if (aeroRear === 'Yes') springArCalc *= 1.05;
 
         if (category === 'Rally') {
             springAvCalc *= 0.85; springArCalc *= 0.85;
@@ -538,6 +541,13 @@
 
         // Affichage
         document.getElementById('resultsCard').classList.remove('hidden');
+    }
+
+    // ENREGISTREMENT DU SERVICE WORKER POUR APPLICATION MOBILE (PWA)
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js');
+        });
     }
 </script>
 
