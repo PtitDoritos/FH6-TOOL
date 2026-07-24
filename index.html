@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PtitDoritos Dynamics - FH6 Tune Calculator</title>
+    <style>
+        :root {
+            --bg-color: #0b0c0e;
+            --card-bg: #13161c;
+            --accent-color: #ff4500; /* Orange PtitDoritos */
+            --accent-hover: #e03d00;
+            --accent-glow: rgba(255, 69, 0, 0.25);
+            --text-color: #f0f2f5;
+            --text-dim: #9aa0a6;
+            --border-color: #242936;
+            --input-bg: #1a1e28;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-color);
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+            color: var(--text-color);
+            margin: 0;
+            padding: 24px 16px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: var(--accent-color);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin: 0 0 4px 0;
+            font-size: 2.2rem;
+            font-weight: 900;
+            text-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .header .sub-brand {
+            font-size: 1.1rem;
+            letter-spacing: 5px;
+            color: #ffffff;
+            text-transform: uppercase;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            color: var(--text-dim);
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            padding: 22px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            margin-bottom: 20px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        h2 {
+            font-size: 1.15rem;
+            color: #ffffff;
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 6px;
+            margin-top: 0;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+        }
+
+        .input-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+
+        input, select {
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            color: white;
+            padding: 10px 12px;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 2px var(--accent-glow);
+        }
+
+        button {
+            width: 100%;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 16px;
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.1s;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 10px;
+            box-shadow: 0 4px 20px var(--accent-glow);
+        }
+
+        button:hover {
+            background-color: var(--accent-hover);
+        }
+
+        button:active {
+            transform: scale(0.99);
+        }
+
+        .results-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 16px;
+            margin-top: 15px;
+        }
+
+        .result-box {
+            background-color: #191d27;
+            padding: 14px;
+            border-radius: 10px;
+            border-left: 4px solid var(--accent-color);
+            border-top: 1px solid var(--border-color);
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .result-title {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-weight: 600;
+        }
+
+        .result-value {
+            font-size: 1.05rem;
+            font-weight: bold;
+            margin-top: 6px;
+            color: #ffffff;
+            line-height: 1.4;
+        }
+
+        .note-box {
+            background-color: rgba(255, 69, 0, 0.08);
+            border: 1px solid rgba(255, 69, 0, 0.3);
+            border-radius: 8px;
+            padding: 12px 16px;
+            margin-top: 15px;
+            font-size: 0.88rem;
+            color: #e0e0e0;
+            line-height: 1.4;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <h1>PTITDORITOS</h1>
+        <div class="sub-brand">DYNAMICS</div>
+        <p>FH6 Precision Tune Generator</p>
+    </div>
+
+    <!-- FORMULAIRE DES DONNÉES DE L'AUTO -->
+    <div class="card">
+        <h2>1. Caractéristiques du Véhicule</h2>
+        <div class="grid">
+            <div class="input-group">
+                <label for="tuneCategory">Discipline / Type de Course</label>
+                <select id="tuneCategory">
+                    <option value="Grip" selected>🏁 Circuit / Grip & Précision</option>
+                    <option value="Sprint">⚡ Sprint / Vitesse de Pointe</option>
+                    <option value="Rally">🌲 Rallye / Terre & Tout-Terrain</option>
+                    <option value="Drift">💨 Drift / Glisse Contrôlée</option>
+                    <option value="Drag">🚀 Drag / Ligne Droite</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="weight">Poids total (kg)</label>
+                <input type="number" id="weight" value="1420" min="500" max="3000">
+            </div>
+            <div class="input-group">
+                <label for="bias">Répartition Masse AV (%)</label>
+                <input type="number" id="bias" value="52" min="10" max="90">
+            </div>
+            <div class="input-group">
+                <label for="drivetrain">Transmission</label>
+                <select id="drivetrain">
+                    <option value="RWD">Propulsion (RWD)</option>
+                    <option value="AWD" selected>Intégrale (AWD)</option>
+                    <option value="FWD">Traction (FWD)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="enginePos">Position du Moteur</label>
+                <select id="enginePos">
+                    <option value="Front" selected>Avant (Moteur Avant)</option>
+                    <option value="Mid">Central (Moteur Central)</option>
+                    <option value="Rear">Arrière (Moteur Arrière)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="tireType">Gomme de Pneus</label>
+                <select id="tireType">
+                    <option value="Street">Rue / Série</option>
+                    <option value="Sport">Sport</option>
+                    <option value="SemiSlick" selected>Semi-Slick</option>
+                    <option value="Slick">Slick de Course</option>
+                    <option value="Rally">Rallye / Tout-Terrain</option>
+                    <option value="Drift">Gomme Drift</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="aeroFront">Aéro Avant Réglable</label>
+                <select id="aeroFront">
+                    <option value="No" selected>Non (D'origine)</option>
+                    <option value="Yes">Oui (Pare-chocs / Lame Réglable)</option>
+                </select>
+            </div>
+            <div class="input-group">
+                <label for="aeroRear">Aéro Arrière Réglable</label>
+                <select id="aeroRear">
+                    <option value="No" selected>Non (D'origine)</option>
+                    <option value="Yes">Oui (Aileron Réglable)</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <!-- VALEURS MIN/MAX DU JEU -->
+    <div class="card">
+        <h2>2. Plage des Ressorts (Curseurs du Jeu)</h2>
+        <div class="grid">
+            <div class="input-group">
+                <label for="springAvMin">Ressorts AV Min (kg/mm)</label>
+                <input type="number" id="springAvMin" value="35.0" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="springAvMax">Ressorts AV Max (kg/mm)</label>
+                <input type="number" id="springAvMax" value="210.0" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="springArMin">Ressorts AR Min (kg/mm)</label>
+                <input type="number" id="springArMin" value="30.0" step="0.1">
+            </div>
+            <div class="input-group">
+                <label for="springArMax">Ressorts AR Max (kg/mm)</label>
+                <input type="number" id="springArMax" value="190.0" step="0.1">
+            </div>
+        </div>
+    </div>
+
+    <button onclick="calculateTune()">Générer la Fiche Dynamics</button>
+
+    <!-- RÉSULTATS -->
+    <div id="resultsCard" class="card hidden">
+        <h2>3. Fiche de Réglage Recommandée</h2>
+        <div class="results-grid">
+            
+            <div class="result-box">
+                <div class="result-title">Pression des Pneus</div>
+                <div class="result-value" id="resPneus"></div>
+            </div>
+
+            <div class="result-box">
+                <div class="result-title">Alignement & Géométrie</div>
+                <div class="result-value" id="resAlignement"></div>
+            </div>
+
+            <div class="result-box">
+                <div class="result-title">Aérodynamisme (Appui)</div>
+                <div class="result-value" id="resAero"></div>
+            </div>
+
+            <div class="result-box">
+                <div class="result-title">Barres Antiroulis (ARB)</div>
+                <div class="result-value" id="resArb"></div>
+            </div>
+
+            <div class="result-box">
+                <div class="result-title">Ressorts (kg/mm)</div>
+                <div class="result-value" id="resRessorts"></div>
+            </div>
+
+            <div class="result-box">
+                <div class="result-title">Détente Amortisseurs</div>
+                <div class="result-value" id="resRebound"></div>
+            </div>
+
+            <div class="result-box">
+                <div class="result-title">Compression Amortisseurs</div>
+                <div class="result-value" id="resBump"></div>
+            </div>
+
+            <div class="result-box" style="grid-column: 1 / -1;">
+                <div class="result-title">Différentiel</div>
+                <div class="result-value" id="resDiff"></div>
+            </div>
+
+        </div>
+
+        <div class="note-box" id="resNotes"></div>
+    </div>
+</div>
+
+<script>
+    function calculateTune() {
+        const biasAv = parseFloat(document.getElementById('bias').value) / 100;
+        const biasAr = 1 - biasAv;
+
+        const springAvMin = parseFloat(document.getElementById('springAvMin').value);
+        const springAvMax = parseFloat(document.getElementById('springAvMax').value);
+        const springArMin = parseFloat(document.getElementById('springArMin').value);
+        const springArMax = parseFloat(document.getElementById('springArMax').value);
+
+        const category = document.getElementById('tuneCategory').value;
+        const drivetrain = document.getElementById('drivetrain').value;
+        const enginePos = document.getElementById('enginePos').value;
+        const tireType = document.getElementById('tireType').value;
+        const aeroFront = document.getElementById('aeroFront').value;
+        const aeroRear = document.getElementById('aeroRear').value;
+
+        // 1. PRESSION PNEUS
+        let basePressAv = 2.0;
+        let basePressAr = 1.9;
+
+        if (category === 'Rally') {
+            basePressAv = 1.6; basePressAr = 1.5;
+        } else if (category === 'Drift') {
+            basePressAv = 2.2; basePressAr = 2.4;
+        } else if (category === 'Drag') {
+            basePressAv = 2.5; basePressAr = 1.1;
+        } else if (category === 'Sprint') {
+            basePressAv = 2.1; basePressAr = 2.0;
+        } else {
+            if (tireType === 'Street') { basePressAv = 2.1; basePressAr = 2.0; }
+            else if (tireType === 'Sport') { basePressAv = 2.0; basePressAr = 1.9; }
+            else if (tireType === 'SemiSlick') { basePressAv = 1.9; basePressAr = 1.8; }
+            else if (tireType === 'Slick') { basePressAv = 1.8; basePressAr = 1.7; }
+        }
+
+        if ((enginePos === 'Mid' || enginePos === 'Rear') && category !== 'Drift') {
+            basePressAr -= 0.1;
+        }
+
+        const pneusText = `AV: ${basePressAv.toFixed(1)} bar | AR: ${basePressAr.toFixed(1)} bar`;
+
+        // 2. ALIGNEMENT
+        let cambAv = -1.8, cambAr = -1.2;
+        let caster = (enginePos === 'Mid' || enginePos === 'Rear') ? 6.1 : 6.4;
+        let toeAv = "+0.1°", toeAr = (drivetrain === 'RWD') ? "-0.1°" : "0.0°";
+
+        if (category === 'Drift') {
+            cambAv = -3.0; cambAr = -0.5;
+            toeAv = "+0.3°"; toeAr = "+0.1°";
+            caster = 7.0;
+        } else if (category === 'Rally') {
+            cambAv = -1.2; cambAr = -0.8;
+            toeAv = "0.0°"; toeAr = "0.0°";
+            caster = 5.8;
+        } else if (category === 'Drag') {
+            cambAv = 0.0; cambAr = 0.0;
+            toeAv = "0.0°"; toeAr = "0.0°";
+            caster = 7.0;
+        } else if (category === 'Sprint') {
+            cambAv = -1.5; cambAr = -1.0;
+            caster = 6.2;
+        }
+
+        const alignText = `Carrossage: AV ${cambAv.toFixed(1)}° / AR ${cambAr.toFixed(1)}°<br>` +
+                          `Parallélisme: AV ${toeAv} / AR ${toeAr}<br>` +
+                          `Chasse avant: ${caster.toFixed(1)}°`;
+
+        // 3. AÉRRODYNAMISME
+        let aeroText = "";
+        if (aeroFront === 'No' && aeroRear === 'No') {
+            aeroText = "Non réglable (Aéro d'origine)";
+        } else {
+            let frontVal = "D'origine", rearVal = "D'origine";
+            
+            if (aeroFront === 'Yes') {
+                if (category === 'Grip') frontVal = "65% (Élevé)";
+                else if (category === 'Sprint') frontVal = "40% (Modéré)";
+                else if (category === 'Drift' || category === 'Drag') frontVal = "Min (100% Vitesse)";
+                else frontVal = "50% (Neutre)";
+            }
+            if (aeroRear === 'Yes') {
+                if (category === 'Grip') {
+                    rearVal = (aeroFront === 'Yes') ? "65% (Équilibré)" : "50% (Anti-sous-virage)";
+                } else if (category === 'Sprint') {
+                    rearVal = "35% (Vitesse de pointe)";
+                } else if (category === 'Drift' || category === 'Drag') {
+                    rearVal = "Min (100% Vitesse)";
+                } else {
+                    rearVal = "50% (Neutre)";
+                }
+            }
+            aeroText = `AV: ${frontVal}<br>AR: ${rearVal}`;
+        }
+
+        // 4. RESSORTS (Adaptés si Aéro présente pour éviter le talonnage)
+        let springAvCalc = ((springAvMax - springAvMin) * biasAv + springAvMin);
+        let springArCalc = ((springArMax - springArMin) * biasAr + springArMin);
+
+        if (aeroFront === 'Yes') springAvCalc *= 1.05; // Affermit l'avant sous appui
+        if (aeroRear === 'Yes') springArCalc *= 1.05;  // Affermit l'arrière sous appui
+
+        if (category === 'Rally') {
+            springAvCalc *= 0.85; springArCalc *= 0.85;
+        } else if (category === 'Drag') {
+            springAvCalc *= 0.70; springArCalc *= 1.30;
+        } else if (enginePos === 'Rear') {
+            springAvCalc *= 1.05;
+        } else if (enginePos === 'Mid') {
+            springArCalc *= 1.03;
+        }
+
+        const ressortAv = springAvCalc.toFixed(1);
+        const ressortAr = springArCalc.toFixed(1);
+
+        // 5. BARRES ANTIROULIS (ARB)
+        let arbAvCalc, arbArCalc;
+        if (category === 'Drift') {
+            arbAvCalc = 15.0; arbArCalc = 45.0;
+        } else if (category === 'Rally') {
+            arbAvCalc = 12.0 * biasAv + 5; arbArCalc = 15.0 * biasAr + 5;
+        } else if (category === 'Drag') {
+            arbAvCalc = 1.0; arbArCalc = 60.0;
+        } else if (drivetrain === 'AWD') {
+            arbAvCalc = 18.0 * biasAv + 8;
+            arbArCalc = (aeroRear === 'Yes' && aeroFront === 'No') ? (35.0 * biasAr + 18) : (35.0 * biasAr + 15);
+        } else if (drivetrain === 'RWD') {
+            arbAvCalc = 22.0 * biasAv + 10;
+            arbArCalc = 26.0 * biasAr + 10;
+        } else {
+            arbAvCalc = 32.0 * biasAv + 10;
+            arbArCalc = 16.0 * biasAr + 5;
+        }
+
+        const arbAv = arbAvCalc.toFixed(1);
+        const arbAr = arbArCalc.toFixed(1);
+
+        // 6. AMORTISSEMENT
+        let reboundBase = 11.5;
+        let bumpRatio = 0.55;
+
+        if (category === 'Rally') { reboundBase = 8.5; bumpRatio = 0.50; }
+        else if (category === 'Drift') { reboundBase = 12.0; bumpRatio = 0.60; }
+
+        const reboundAv = (reboundBase * biasAv + 5.0).toFixed(1);
+        const reboundAr = (reboundBase * biasAr + 5.0).toFixed(1);
+
+        const bumpAv = (parseFloat(reboundAv) * bumpRatio).toFixed(1);
+        const bumpAr = (parseFloat(reboundAr) * bumpRatio).toFixed(1);
+
+        // 7. DIFFÉRENTIEL
+        let diffText = "";
+        if (category === 'Drift') {
+            diffText = "<b>Accélération :</b> 100% | <b>Décélération :</b> 100% (Verrouillage total)";
+        } else if (category === 'Drag') {
+            diffText = "<b>Accélération :</b> 100% | <b>Décélération :</b> 0%";
+        } else if (drivetrain === 'AWD') {
+            diffText = "<b>AV :</b> Accél 15% / Décél 0%<br>" +
+                       "<b>AR :</b> Accél 65% / Décél 10%<br>" +
+                       "<b>Répartition Centrale :</b> 72% vers l'arrière";
+        } else if (drivetrain === 'RWD') {
+            diffText = "<b>Accélération :</b> 44% | <b>Décélération :</b> 18%";
+        } else {
+            diffText = "<b>Accélération :</b> 35% | <b>Décélération :</b> 0%";
+        }
+
+        // 8. NOTES D'OPTIMISATION
+        let noteText = `<b>💡 Note PtitDoritos Dynamics (${category}) :</b> `;
+        if (aeroRear === 'Yes' && aeroFront === 'No') {
+            noteText += "Aéro arrière unique : L'aileron apporte de la stabilité en courbe rapide, mais peut provoquer du sous-virage à l'entrée des virages lent. L'ARB arrière a été légèrement rigidifiée pour compenser.";
+        } else if (category === 'Drift') {
+            noteText += "Réglage orienté glisse extrême : Carrossage avant très négatif (-3.0°) pour la précision en contre-braquage, différentiel bloqué à 100%.";
+        } else if (category === 'Rally') {
+            noteText += "Configuration Tout-Terrain : Pression basse pour le grip sur terre, suspensions très assouplies pour absorber les bosses sans rebondir.";
+        } else {
+            noteText += "Réglage Grip / Piste : Équilibre optimal pour viser la précision chirurgicale et des temps au tour réguliers.";
+        }
+
+        // Injection des résultats
+        document.getElementById('resPneus').innerText = pneusText;
+        document.getElementById('resAlignement').innerHTML = alignText;
+        document.getElementById('resAero').innerHTML = aeroText;
+        document.getElementById('resArb').innerText = `AV: ${arbAv} | AR: ${arbAr}`;
+        document.getElementById('resRessorts').innerText = `AV: ${ressortAv} | AR: ${ressortAr}`;
+        document.getElementById('resRebound').innerText = `AV: ${reboundAv} | AR: ${reboundAr}`;
+        document.getElementById('resBump').innerText = `AV: ${bumpAv} | AR: ${bumpAr}`;
+        document.getElementById('resDiff').innerHTML = diffText;
+        document.getElementById('resNotes').innerHTML = noteText;
+
+        // Affichage
+        document.getElementById('resultsCard').classList.remove('hidden');
+    }
+</script>
+
+</body>
+</html>
