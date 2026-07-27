@@ -44,6 +44,7 @@
         .header {
             text-align: center;
             margin-bottom: 30px;
+            position: relative;
         }
 
         .header h1 {
@@ -67,8 +68,22 @@
 
         .header p {
             color: var(--text-dim);
-            margin: 0;
+            margin: 0 0 12px 0;
             font-size: 0.9rem;
+        }
+
+        .lang-picker {
+            display: inline-block;
+        }
+
+        .lang-picker select {
+            padding: 4px 10px;
+            font-size: 0.85rem;
+            background-color: var(--input-bg);
+            border: 1px solid var(--border-color);
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
         }
 
         .card {
@@ -205,70 +220,78 @@
     <div class="header">
         <h1>PTITDORITOS</h1>
         <div class="sub-brand">DYNAMICS</div>
-        <p>FH6 Precision Tune Generator</p>
+        <p data-i18n="subtitle">FH6 Precision Tune Generator</p>
+
+        <!-- SELECTEUR DE LANGUE -->
+        <div class="lang-picker">
+            <select id="langSelect" onchange="changeLanguage(this.value)">
+                <option value="fr">🇫🇷 Français</option>
+                <option value="en">🇬🇧 English</option>
+            </select>
+        </div>
     </div>
 
     <!-- FORMULAIRE DES DONNÉES DE L'AUTO -->
     <div class="card">
-        <h2>1. Caractéristiques du Véhicule</h2>
+        <h2 data-i18n="sec1_title">1. Caractéristiques du Véhicule</h2>
         <div class="grid">
             <div class="input-group">
-                <label for="tuneCategory">Discipline / Type de Course</label>
+                <label for="tuneCategory" data-i18n="lbl_discipline">Discipline / Type de Course</label>
                 <select id="tuneCategory">
-                    <option value="Grip" selected>🏁 Circuit / Grip & Précision</option>
-                    <option value="Sprint">⚡ Sprint / Vitesse de Pointe</option>
-                    <option value="Rally">🌲 Rallye / Terre & Tout-Terrain</option>
-                    <option value="Drift">💨 Drift / Glisse Contrôlée</option>
-                    <option value="Drag">🚀 Drag / Ligne Droite</option>
+                    <option value="Grip" selected data-i18n="opt_grip">🏁 Circuit / Grip & Précision</option>
+                    <option value="Sprint" data-i18n="opt_sprint">⚡ Sprint / Vitesse de Pointe</option>
+                    <option value="Rally" data-i18n="opt_rally">🌲 Rallye / Terre & Tout-Terrain</option>
+                    <option value="Drift" data-i18n="opt_drift">💨 Drift / Glisse Contrôlée</option>
+                    <option value="Drag" data-i18n="opt_drag">🚀 Drag / Ligne Droite</option>
                 </select>
             </div>
             <div class="input-group">
-                <label for="weight">Poids total (kg)</label>
+                <label for="weight" data-i18n="lbl_weight">Poids total (kg)</label>
                 <input type="number" id="weight" value="1420" min="500" max="3000">
             </div>
             <div class="input-group">
-                <label for="bias">Répartition Masse AV (%)</label>
+                <label for="bias" data-i18n="lbl_bias">Répartition Masse AV (%)</label>
                 <input type="number" id="bias" value="52" min="10" max="90">
             </div>
             <div class="input-group">
-                <label for="drivetrain">Transmission</label>
+                <label for="drivetrain" data-i18n="lbl_drivetrain">Transmission</label>
                 <select id="drivetrain">
-                    <option value="RWD">Propulsion (RWD)</option>
-                    <option value="AWD" selected>Intégrale (AWD)</option>
-                    <option value="FWD">Traction (FWD)</option>
+                    <option value="RWD" data-i18n="opt_rwd">Propulsion (RWD)</option>
+                    <option value="AWD" selected data-i18n="opt_awd">Intégrale (AWD)</option>
+                    <option value="FWD" data-i18n="opt_fwd">Traction (FWD)</option>
                 </select>
             </div>
             <div class="input-group">
-                <label for="enginePos">Position du Moteur</label>
+                <label for="enginePos" data-i18n="lbl_enginePos">Position du Moteur</label>
                 <select id="enginePos">
-                    <option value="Front" selected>Avant (Moteur Avant)</option>
-                    <option value="Mid">Central (Moteur Central)</option>
-                    <option value="Rear">Arrière (Moteur Arrière)</option>
+                    <option value="Front" selected data-i18n="opt_front">Avant (Moteur Avant)</option>
+                    <option value="Mid" data-i18n="opt_mid">Central (Moteur Central)</option>
+                    <option value="Rear" data-i18n="opt_rear">Arrière (Moteur Arrière)</option>
                 </select>
             </div>
             <div class="input-group">
-                <label for="tireType">Gomme de Pneus</label>
+                <label for="tireType" data-i18n="lbl_tireType">Gomme de Pneus</label>
                 <select id="tireType">
-                    <option value="Street">Rue / Série</option>
-                    <option value="Sport">Sport</option>
-                    <option value="SemiSlick" selected>Semi-Slick</option>
-                    <option value="Slick">Slick de Course</option>
-                    <option value="Rally">Rallye / Tout-Terrain</option>
-                    <option value="Drift">Gomme Drift</option>
+                    <option value="Street" data-i18n="opt_street">Rue / Série</option>
+                    <option value="Sport" data-i18n="opt_sport">Sport</option>
+                    <option value="SemiSlick" selected data-i18n="opt_semislick">Semi-Slick</option>
+                    <option value="Slick" data-i18n="opt_slick">Slick de Course</option>
+                    <option value="Rally" data-i18n="opt_rallytire">Rallye / Tout-Terrain</option>
+                    <option value="Drift" data-i18n="opt_drifttire">Gomme Drift</option>
                 </select>
             </div>
             <div class="input-group">
-                <label for="aeroFront">Aéro Avant Réglable</label>
+                <label for="aeroFront" data-i18n="lbl_aeroFront">Aéro Avant Réglable</label>
                 <select id="aeroFront">
-                    <option value="No" selected>Non (D'origine)</option>
-                    <option value="Yes">Oui (Pare-chocs / Lame Réglable)</option>
+                    <option value="No" selected data-i18n="opt_no">Non (D'origine)</option>
+                    <option value="Yes" data-i18n="opt_yes">Oui (Réglable)</option>
                 </select>
             </div>
             <div class="input-group">
-                <label for="aeroRear">Aéro Arrière Réglable</label>
+                <label for="aeroRear" data-i18n="lbl_aeroRear">Aéro Arrière Réglable</label>
                 <select id="aeroRear">
-                    <option value="No" selected>Non (D'origine)</option>
-                    <option value="Yes">Oui (Aileron Réglable)</option>
+                    <option value="No" selected data-i18n="opt_no">Non (D'origine)</option>
+                    <option value="Yes" data-i18n="opt_yes">Oui (Réglable)</option>
                 </select>
             </div>
         </div>
@@ -276,71 +299,71 @@
 
     <!-- VALEURS MIN/MAX DU JEU -->
     <div class="card">
-        <h2>2. Plage des Ressorts (Curseurs du Jeu)</h2>
+        <h2 data-i18n="sec2_title">2. Plage des Ressorts (Curseurs du Jeu)</h2>
         <div class="grid">
             <div class="input-group">
-                <label for="springAvMin">Ressorts AV Min (kg/mm)</label>
+                <label for="springAvMin" data-i18n="lbl_springAvMin">Ressorts AV Min (kg/mm)</label>
                 <input type="number" id="springAvMin" value="35.0" step="0.1">
             </div>
             <div class="input-group">
-                <label for="springAvMax">Ressorts AV Max (kg/mm)</label>
+                <label for="springAvMax" data-i18n="lbl_springAvMax">Ressorts AV Max (kg/mm)</label>
                 <input type="number" id="springAvMax" value="210.0" step="0.1">
             </div>
             <div class="input-group">
-                <label for="springArMin">Ressorts AR Min (kg/mm)</label>
+                <label for="springArMin" data-i18n="lbl_springArMin">Ressorts AR Min (kg/mm)</label>
                 <input type="number" id="springArMin" value="30.0" step="0.1">
             </div>
             <div class="input-group">
-                <label for="springArMax">Ressorts AR Max (kg/mm)</label>
+                <label for="springArMax" data-i18n="lbl_springArMax">Ressorts AR Max (kg/mm)</label>
                 <input type="number" id="springArMax" value="190.0" step="0.1">
             </div>
         </div>
     </div>
 
-    <button onclick="calculateTune()">Générer la Fiche Dynamics</button>
+    <button onclick="calculateTune()" data-i18n="btn_generate">Générer la Fiche Dynamics</button>
 
     <!-- RÉSULTATS -->
     <div id="resultsCard" class="card hidden">
-        <h2>3. Fiche de Réglage Recommandée</h2>
+        <h2 data-i18n="sec3_title">3. Fiche de Réglage Recommandée</h2>
         <div class="results-grid">
             
             <div class="result-box">
-                <div class="result-title">Pression des Pneus</div>
+                <div class="result-title" data-i18n="res_pneus">Pression des Pneus</div>
                 <div class="result-value" id="resPneus"></div>
             </div>
 
             <div class="result-box">
-                <div class="result-title">Alignement & Géométrie</div>
+                <div class="result-title" data-i18n="res_align">Alignement & Géométrie</div>
                 <div class="result-value" id="resAlignement"></div>
             </div>
 
             <div class="result-box">
-                <div class="result-title">Aérodynamisme (Appui)</div>
+                <div class="result-title" data-i18n="res_aero">Aérodynamisme (Appui)</div>
                 <div class="result-value" id="resAero"></div>
             </div>
 
             <div class="result-box">
-                <div class="result-title">Barres Antiroulis (ARB)</div>
+                <div class="result-title" data-i18n="res_arb">Barres Antiroulis (ARB)</div>
                 <div class="result-value" id="resArb"></div>
             </div>
 
             <div class="result-box">
-                <div class="result-title">Ressorts (kg/mm)</div>
+                <div class="result-title" data-i18n="res_springs">Ressorts (kg/mm)</div>
                 <div class="result-value" id="resRessorts"></div>
             </div>
 
             <div class="result-box">
-                <div class="result-title">Détente Amortisseurs</div>
+                <div class="result-title" data-i18n="res_rebound">Détente Amortisseurs</div>
                 <div class="result-value" id="resRebound"></div>
             </div>
 
             <div class="result-box">
-                <div class="result-title">Compression Amortisseurs</div>
+                <div class="result-title" data-i18n="res_bump">Compression Amortisseurs</div>
                 <div class="result-value" id="resBump"></div>
             </div>
 
             <div class="result-box" style="grid-column: 1 / -1;">
-                <div class="result-title">Différentiel</div>
+                <div class="result-title" data-i18n="res_diff">Différentiel</div>
                 <div class="result-value" id="resDiff"></div>
             </div>
 
@@ -351,7 +374,124 @@
 </div>
 
 <script>
+    // 1. DICTIONNAIRE MULTILINGUE
+    const translations = {
+        fr: {
+            subtitle: "FH6 Precision Tune Generator",
+            sec1_title: "1. Caractéristiques du Véhicule",
+            lbl_discipline: "Discipline / Type de Course",
+            opt_grip: "🏁 Circuit / Grip & Précision",
+            opt_sprint: "⚡ Sprint / Vitesse de Pointe",
+            opt_rally: "🌲 Rallye / Terre & Tout-Terrain",
+            opt_drift: "💨 Drift / Glisse Contrôlée",
+            opt_drag: "🚀 Drag / Ligne Droite",
+            lbl_weight: "Poids total (kg)",
+            lbl_bias: "Répartition Masse AV (%)",
+            lbl_drivetrain: "Transmission",
+            opt_rwd: "Propulsion (RWD)",
+            opt_awd: "Intégrale (AWD)",
+            opt_fwd: "Traction (FWD)",
+            lbl_enginePos: "Position du Moteur",
+            opt_front: "Avant (Moteur Avant)",
+            opt_mid: "Central (Moteur Central)",
+            opt_rear: "Arrière (Moteur Arrière)",
+            lbl_tireType: "Gomme de Pneus",
+            opt_street: "Rue / Série",
+            opt_sport: "Sport",
+            opt_semislick: "Semi-Slick",
+            opt_slick: "Slick de Course",
+            opt_rallytire: "Rallye / Tout-Terrain",
+            opt_drifttire: "Gomme Drift",
+            lbl_aeroFront: "Aéro Avant Réglable",
+            lbl_aeroRear: "Aéro Arrière Réglable",
+            opt_no: "Non (D'origine)",
+            opt_yes: "Oui (Réglable)",
+            sec2_title: "2. Plage des Ressorts (Curseurs du Jeu)",
+            lbl_springAvMin: "Ressorts AV Min (kg/mm)",
+            lbl_springAvMax: "Ressorts AV Max (kg/mm)",
+            lbl_springArMin: "Ressorts AR Min (kg/mm)",
+            lbl_springArMax: "Ressorts AR Max (kg/mm)",
+            btn_generate: "Générer la Fiche Dynamics",
+            sec3_title: "3. Fiche de Réglage Recommandée",
+            res_pneus: "Pression des Pneus",
+            res_align: "Alignement & Géométrie",
+            res_aero: "Aérodynamisme (Appui)",
+            res_arb: "Barres Antiroulis (ARB)",
+            res_springs: "Ressorts (kg/mm)",
+            res_rebound: "Détente Amortisseurs",
+            res_bump: "Compression Amortisseurs",
+            res_diff: "Différentiel"
+        },
+        en: {
+            subtitle: "FH6 Precision Tune Generator",
+            sec1_title: "1. Vehicle Specifications",
+            lbl_discipline: "Discipline / Race Type",
+            opt_grip: "🏁 Circuit / Grip & Precision",
+            opt_sprint: "⚡ Sprint / Top Speed",
+            opt_rally: "🌲 Rally / Dirt & Off-Road",
+            opt_drift: "💨 Drift / Controlled Slide",
+            opt_drag: "🚀 Drag / Straight Line",
+            lbl_weight: "Total Weight (kg)",
+            lbl_bias: "Front Weight Distribution (%)",
+            lbl_drivetrain: "Drivetrain",
+            opt_rwd: "Rear-Wheel Drive (RWD)",
+            opt_awd: "All-Wheel Drive (AWD)",
+            opt_fwd: "Front-Wheel Drive (FWD)",
+            lbl_enginePos: "Engine Position",
+            opt_front: "Front (Front Engine)",
+            opt_mid: "Mid (Mid Engine)",
+            opt_rear: "Rear (Rear Engine)",
+            lbl_tireType: "Tire Compound",
+            opt_street: "Street / Stock",
+            opt_sport: "Sport",
+            opt_semislick: "Semi-Slick",
+            opt_slick: "Race Slick",
+            opt_rallytire: "Rally / Off-Road",
+            opt_drifttire: "Drift Compound",
+            lbl_aeroFront: "Adjustable Front Aero",
+            lbl_aeroRear: "Adjustable Rear Aero",
+            opt_no: "No (Stock)",
+            opt_yes: "Yes (Adjustable)",
+            sec2_title: "2. Spring Range (In-Game Sliders)",
+            lbl_springAvMin: "Front Spring Min (kg/mm)",
+            lbl_springAvMax: "Front Spring Max (kg/mm)",
+            lbl_springArMin: "Rear Spring Min (kg/mm)",
+            lbl_springArMax: "Rear Spring Max (kg/mm)",
+            btn_generate: "Generate Dynamics Sheet",
+            sec3_title: "3. Recommended Tune Sheet",
+            res_pneus: "Tire Pressure",
+            res_align: "Alignment & Geometry",
+            res_aero: "Aerodynamics (Downforce)",
+            res_arb: "Anti-Roll Bars (ARB)",
+            res_springs: "Springs (kg/mm)",
+            res_rebound: "Rebound Damping",
+            res_bump: "Bump Damping",
+            res_diff: "Differential"
+        }
+    };
+
+    // 2. CHANGER LA LANGUE DE L'INTERFACE
+    function changeLanguage(lang) {
+        localStorage.setItem('preferred_lang', lang);
+        document.getElementById('langSelect').value = lang;
+
+        document.querySelectorAll('[data-i18n]').forEach(element => {
+            const key = element.getAttribute('data-i18n');
+            if (translations[lang] && translations[lang][key]) {
+                element.textContent = translations[lang][key];
+            }
+        });
+
+        // Recalculer si la fiche de résultat est visible
+        if (!document.getElementById('resultsCard').classList.contains('hidden')) {
+            calculateTune();
+        }
+    }
+
+    // 3. LOGIQUE DU CALCULATEUR
     function calculateTune() {
+        const lang = localStorage.getItem('preferred_lang') || 'fr';
+
         const biasAv = parseFloat(document.getElementById('bias').value) / 100;
         const biasAr = 1 - biasAv;
 
@@ -367,7 +507,7 @@
         const aeroFront = document.getElementById('aeroFront').value;
         const aeroRear = document.getElementById('aeroRear').value;
 
-        // 1. PRESSION PNEUS
+        // PRESSION PNEUS
         let basePressAv = 2.0;
         let basePressAr = 1.9;
 
@@ -390,9 +530,11 @@
             basePressAr -= 0.1;
         }
 
-        const pneusText = `AV: ${basePressAv.toFixed(1)} bar | AR: ${basePressAr.toFixed(1)} bar`;
+        const pneusText = (lang === 'fr') 
+            ? `AV: ${basePressAv.toFixed(1)} bar | AR: ${basePressAr.toFixed(1)} bar`
+            : `Front: ${basePressAv.toFixed(1)} bar | Rear: ${basePressAr.toFixed(1)} bar`;
 
-        // 2. ALIGNEMENT
+        // ALIGNEMENT
         let cambAv = -1.8, cambAr = -1.2;
         let caster = (enginePos === 'Mid' || enginePos === 'Rear') ? 6.1 : 6.4;
         let toeAv = "+0.1°", toeAr = (drivetrain === 'RWD') ? "-0.1°" : "0.0°";
@@ -414,38 +556,41 @@
             caster = 6.2;
         }
 
-        const alignText = `Carrossage: AV ${cambAv.toFixed(1)}° / AR ${cambAr.toFixed(1)}°<br>` +
-                          `Parallélisme: AV ${toeAv} / AR ${toeAr}<br>` +
-                          `Chasse avant: ${caster.toFixed(1)}°`;
+        const alignText = (lang === 'fr')
+            ? `Carrossage: AV ${cambAv.toFixed(1)}° / AR ${cambAr.toFixed(1)}°<br>Parallélisme: AV ${toeAv} / AR ${toeAr}<br>Chasse avant: ${caster.toFixed(1)}°`
+            : `Camber: Front ${cambAv.toFixed(1)}° / Rear ${cambAr.toFixed(1)}°<br>Toe: Front ${toeAv} / Rear ${toeAr}<br>Front Caster: ${caster.toFixed(1)}°`;
 
-        // 3. AÉRRODYNAMISME
+        // AÉRODYNAMISME
         let aeroText = "";
         if (aeroFront === 'No' && aeroRear === 'No') {
-            aeroText = "Non réglable (Aéro d'origine)";
+            aeroText = (lang === 'fr') ? "Non réglable (Aéro d'origine)" : "Not adjustable (Stock Aero)";
         } else {
-            let frontVal = "D'origine", rearVal = "D'origine";
+            let frontVal = (lang === 'fr') ? "D'origine" : "Stock";
+            let rearVal = (lang === 'fr') ? "D'origine" : "Stock";
             
             if (aeroFront === 'Yes') {
-                if (category === 'Grip') frontVal = "65% (Élevé)";
-                else if (category === 'Sprint') frontVal = "40% (Modéré)";
-                else if (category === 'Drift' || category === 'Drag') frontVal = "Min (100% Vitesse)";
-                else frontVal = "50% (Neutre)";
+                if (category === 'Grip') frontVal = (lang === 'fr') ? "65% (Élevé)" : "65% (High)";
+                else if (category === 'Sprint') frontVal = (lang === 'fr') ? "40% (Modéré)" : "40% (Moderate)";
+                else if (category === 'Drift' || category === 'Drag') frontVal = (lang === 'fr') ? "Min (100% Vitesse)" : "Min (100% Speed)";
+                else frontVal = (lang === 'fr') ? "50% (Neutre)" : "50% (Neutral)";
             }
             if (aeroRear === 'Yes') {
                 if (category === 'Grip') {
-                    rearVal = (aeroFront === 'Yes') ? "65% (Équilibré)" : "50% (Anti-sous-virage)";
+                    rearVal = (aeroFront === 'Yes') 
+                        ? ((lang === 'fr') ? "65% (Équilibré)" : "65% (Balanced)") 
+                        : ((lang === 'fr') ? "50% (Anti-sous-virage)" : "50% (Anti-understeer)");
                 } else if (category === 'Sprint') {
-                    rearVal = "35% (Vitesse de pointe)";
+                    rearVal = (lang === 'fr') ? "35% (Vitesse de pointe)" : "35% (Top speed)";
                 } else if (category === 'Drift' || category === 'Drag') {
-                    rearVal = "Min (100% Vitesse)";
+                    rearVal = (lang === 'fr') ? "Min (100% Vitesse)" : "Min (100% Speed)";
                 } else {
-                    rearVal = "50% (Neutre)";
+                    rearVal = (lang === 'fr') ? "50% (Neutre)" : "50% (Neutral)";
                 }
             }
-            aeroText = `AV: ${frontVal}<br>AR: ${rearVal}`;
+            aeroText = (lang === 'fr') ? `AV: ${frontVal}<br>AR: ${rearVal}` : `Front: ${frontVal}<br>Rear: ${rearVal}`;
         }
 
-        // 4. RESSORTS (Adaptés si Aéro présente)
+        // RESSORTS
         let springAvCalc = ((springAvMax - springAvMin) * biasAv + springAvMin);
         let springArCalc = ((springArMax - springArMin) * biasAr + springArMin);
 
@@ -465,7 +610,7 @@
         const ressortAv = springAvCalc.toFixed(1);
         const ressortAr = springArCalc.toFixed(1);
 
-        // 5. BARRES ANTIROULIS (ARB)
+        // BARRES ANTIROULIS (ARB)
         let arbAvCalc, arbArCalc;
         if (category === 'Drift') {
             arbAvCalc = 15.0; arbArCalc = 45.0;
@@ -487,7 +632,7 @@
         const arbAv = arbAvCalc.toFixed(1);
         const arbAr = arbArCalc.toFixed(1);
 
-        // 6. AMORTISSEMENT
+        // AMORTISSEMENT
         let reboundBase = 11.5;
         let bumpRatio = 0.55;
 
@@ -500,50 +645,81 @@
         const bumpAv = (parseFloat(reboundAv) * bumpRatio).toFixed(1);
         const bumpAr = (parseFloat(reboundAr) * bumpRatio).toFixed(1);
 
-        // 7. DIFFÉRENTIEL
+        // DIFFÉRENTIEL
         let diffText = "";
         if (category === 'Drift') {
-            diffText = "<b>Accélération :</b> 100% | <b>Décélération :</b> 100% (Verrouillage total)";
+            diffText = (lang === 'fr') 
+                ? "<b>Accélération :</b> 100% | <b>Décélération :</b> 100% (Verrouillage total)"
+                : "<b>Acceleration:</b> 100% | <b>Deceleration:</b> 100% (Full Lock)";
         } else if (category === 'Drag') {
-            diffText = "<b>Accélération :</b> 100% | <b>Décélération :</b> 0%";
+            diffText = (lang === 'fr')
+                ? "<b>Accélération :</b> 100% | <b>Décélération :</b> 0%"
+                : "<b>Acceleration:</b> 100% | <b>Deceleration:</b> 0%";
         } else if (drivetrain === 'AWD') {
-            diffText = "<b>AV :</b> Accél 15% / Décél 0%<br>" +
-                       "<b>AR :</b> Accél 65% / Décél 10%<br>" +
-                       "<b>Répartition Centrale :</b> 72% vers l'arrière";
+            diffText = (lang === 'fr')
+                ? "<b>AV :</b> Accél 15% / Décél 0%<br><b>AR :</b> Accél 65% / Décél 10%<br><b>Répartition Centrale :</b> 72% vers l'arrière"
+                : "<b>Front:</b> Accel 15% / Decel 0%<br><b>Rear:</b> Accel 65% / Decel 10%<br><b>Center Balance:</b> 72% Rearward";
         } else if (drivetrain === 'RWD') {
-            diffText = "<b>Accélération :</b> 44% | <b>Décélération :</b> 18%";
+            diffText = (lang === 'fr')
+                ? "<b>Accélération :</b> 44% | <b>Décélération :</b> 18%"
+                : "<b>Acceleration:</b> 44% | <b>Deceleration:</b> 18%";
         } else {
-            diffText = "<b>Accélération :</b> 35% | <b>Décélération :</b> 0%";
+            diffText = (lang === 'fr')
+                ? "<b>Accélération :</b> 35% | <b>Décélération :</b> 0%"
+                : "<b>Acceleration:</b> 35% | <b>Deceleration:</b> 0%";
         }
 
-        // 8. NOTES D'OPTIMISATION
-        let noteText = `<b>💡 Note PtitDoritos Dynamics (${category}) :</b> `;
-        if (aeroRear === 'Yes' && aeroFront === 'No') {
-            noteText += "Aéro arrière unique : L'aileron apporte de la stabilité en courbe rapide, mais peut provoquer du sous-virage à l'entrée des virages lent. L'ARB arrière a été légèrement rigidifiée pour compenser.";
-        } else if (category === 'Drift') {
-            noteText += "Réglage orienté glisse extrême : Carrossage avant très négatif (-3.0°) pour la précision en contre-braquage, différentiel bloqué à 100%.";
-        } else if (category === 'Rally') {
-            noteText += "Configuration Tout-Terrain : Pression basse pour le grip sur terre, suspensions très assouplies pour absorber les bosses sans rebondir.";
+        // NOTES D'OPTIMISATION
+        let noteText = "";
+        if (lang === 'fr') {
+            noteText = `<b>💡 Note PtitDoritos Dynamics (${category}) :</b> `;
+            if (aeroRear === 'Yes' && aeroFront === 'No') {
+                noteText += "Aéro arrière unique : L'aileron apporte de la stabilité en courbe rapide, mais peut provoquer du sous-virage à l'entrée des virages lent. L'ARB arrière a été légèrement rigidifiée pour compenser.";
+            } else if (category === 'Drift') {
+                noteText += "Réglage orienté glisse extrême : Carrossage avant très négatif (-3.0°) pour la précision en contre-braquage, différentiel bloqué à 100%.";
+            } else if (category === 'Rally') {
+                noteText += "Configuration Tout-Terrain : Pression basse pour le grip sur terre, suspensions très assouplies pour absorber les bosses sans rebondir.";
+            } else {
+                noteText += "Réglage Grip / Piste : Équilibre optimal pour viser la précision chirurgicale et des temps au tour réguliers.";
+            }
         } else {
-            noteText += "Réglage Grip / Piste : Équilibre optimal pour viser la précision chirurgicale et des temps au tour réguliers.";
+            noteText = `<b>💡 PtitDoritos Dynamics Note (${category}) :</b> `;
+            if (aeroRear === 'Yes' && aeroFront === 'No') {
+                noteText += "Rear Aero Only: Rear wing increases stability in high-speed corners but may induce understeer in slow corners. Rear ARB has been stiffened to compensate.";
+            } else if (category === 'Drift') {
+                noteText += "Extreme Slide Setup: High negative front camber (-3.0°) for counter-steering precision, 100% locked differential.";
+            } else if (category === 'Rally') {
+                noteText += "Off-Road Setup: Lower tire pressure for dirt traction, softer suspension to absorb bumps without bouncing.";
+            } else {
+                noteText += "Grip / Track Setup: Optimal balance for surgical precision and consistent lap times.";
+            }
         }
 
-        // Injection des résultats
+        // INJECTION DES RÉSULTATS
         document.getElementById('resPneus').innerText = pneusText;
         document.getElementById('resAlignement').innerHTML = alignText;
         document.getElementById('resAero').innerHTML = aeroText;
-        document.getElementById('resArb').innerText = `AV: ${arbAv} | AR: ${arbAr}`;
-        document.getElementById('resRessorts').innerText = `AV: ${ressortAv} | AR: ${ressortAr}`;
-        document.getElementById('resRebound').innerText = `AV: ${reboundAv} | AR: ${reboundAr}`;
-        document.getElementById('resBump').innerText = `AV: ${bumpAv} | AR: ${bumpAr}`;
+        
+        const labelAv = (lang === 'fr') ? "AV" : "Front";
+        const labelAr = (lang === 'fr') ? "AR" : "Rear";
+
+        document.getElementById('resArb').innerText = `${labelAv}: ${arbAv} | ${labelAr}: ${arbAr}`;
+        document.getElementById('resRessorts').innerText = `${labelAv}: ${ressortAv} | ${labelAr}: ${ressortAr}`;
+        document.getElementById('resRebound').innerText = `${labelAv}: ${reboundAv} | ${labelAr}: ${reboundAr}`;
+        document.getElementById('resBump').innerText = `${labelAv}: ${bumpAv} | ${labelAr}: ${bumpAr}`;
         document.getElementById('resDiff').innerHTML = diffText;
         document.getElementById('resNotes').innerHTML = noteText;
 
-        // Affichage
         document.getElementById('resultsCard').classList.remove('hidden');
     }
 
-    // ENREGISTREMENT DU SERVICE WORKER POUR APPLICATION MOBILE (PWA)
+    // 4. DÉMARRAGE ET ENREGISTREMENT DU SERVICE WORKER
+    window.addEventListener('DOMContentLoaded', () => {
+        const savedLang = localStorage.getItem('preferred_lang') || 
+                          (navigator.language.startsWith('fr') ? 'fr' : 'en');
+        changeLanguage(savedLang);
+    });
+
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
             navigator.serviceWorker.register('./sw.js');
