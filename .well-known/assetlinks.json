@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "io.github.ptitdoritos.twa",
+        "sha256_cert_fingerprints": ["FC:D3:43:7B:DD:D0:D8:E1:1B:A6:35:F7:AD:15:ED:4A:18:FC:E6:5A:DB:52:C8:95:88:F2:97:17:3C:5B:FA:75"]
+      }
+    }]
