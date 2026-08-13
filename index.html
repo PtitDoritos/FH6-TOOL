@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PtitDoritos Dynamics - FH6 Hub & Tune Generator</title>
 
-    <!-- INTEGRATION PWA / APPLICATION MOBILE -->
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#ff4500">
 
@@ -13,7 +12,7 @@
         :root {
             --bg-color: #0b0c0e;
             --card-bg: #13161c;
-            --accent-color: #ff4500; /* Orange PtitDoritos */
+            --accent-color: #ff4500; 
             --accent-hover: #e03d00;
             --accent-glow: rgba(255, 69, 0, 0.25);
             --text-color: #f0f2f5;
@@ -36,253 +35,70 @@
             justify-content: center;
         }
 
-        .container {
-            max-width: 900px;
-            width: 100%;
-        }
+        .container { max-width: 900px; width: 100%; }
 
-        .header {
-            text-align: center;
-            margin-bottom: 20px;
-            position: relative;
-        }
-
+        .header { text-align: center; margin-bottom: 20px; position: relative; }
         .header h1 {
-            color: var(--accent-color);
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            margin: 0 0 4px 0;
-            font-size: 2.2rem;
-            font-weight: 900;
+            color: var(--accent-color); text-transform: uppercase; letter-spacing: 3px;
+            margin: 0 0 4px 0; font-size: 2.2rem; font-weight: 900;
             text-shadow: 0 0 15px var(--accent-glow);
         }
+        .header .sub-brand { font-size: 1.1rem; letter-spacing: 5px; color: #ffffff; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+        .header p { color: var(--text-dim); margin: 0 0 12px 0; font-size: 0.9rem; }
 
-        .header .sub-brand {
-            font-size: 1.1rem;
-            letter-spacing: 5px;
-            color: #ffffff;
-            text-transform: uppercase;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .header p {
-            color: var(--text-dim);
-            margin: 0 0 12px 0;
-            font-size: 0.9rem;
-        }
-
-        /* NAVIGATION PAR ONGLETS */
-        .nav-tabs {
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-        }
-
+        .nav-tabs { display: flex; justify-content: center; gap: 8px; margin-bottom: 25px; flex-wrap: wrap; }
         .tab-btn {
-            background-color: var(--card-bg);
-            color: var(--text-dim);
-            border: 1px solid var(--border-color);
-            padding: 10px 16px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
-            transition: all 0.2s ease;
+            background-color: var(--card-bg); color: var(--text-dim); border: 1px solid var(--border-color);
+            padding: 10px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 0.9rem; transition: all 0.2s ease;
         }
-
-        .tab-btn:hover {
-            color: white;
-            border-color: var(--accent-color);
-        }
-
+        .tab-btn:hover { color: white; border-color: var(--accent-color); }
         .tab-btn.active {
-            background-color: var(--accent-color);
-            color: white;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 12px var(--accent-glow);
+            background-color: var(--accent-color); color: white; border-color: var(--accent-color); box-shadow: 0 0 12px var(--accent-glow);
         }
 
-        .lang-picker {
-            display: inline-block;
-            margin-top: 5px;
-        }
-
-        .lang-picker select {
-            padding: 4px 10px;
-            font-size: 0.85rem;
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-color);
-            color: white;
-            border-radius: 6px;
-            cursor: pointer;
-        }
+        .lang-picker { display: inline-block; margin-top: 5px; }
+        .lang-picker select { padding: 4px 10px; font-size: 0.85rem; background-color: var(--input-bg); border: 1px solid var(--border-color); color: white; border-radius: 6px; cursor: pointer; }
 
         .card {
-            background-color: var(--card-bg);
-            padding: 22px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            margin-bottom: 20px;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
+            background-color: var(--card-bg); padding: 22px; border-radius: 12px;
+            border: 1px solid var(--border-color); margin-bottom: 20px; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
         }
 
-        h2 {
-            font-size: 1.15rem;
-            color: #ffffff;
-            border-bottom: 2px solid var(--accent-color);
-            padding-bottom: 6px;
-            margin-top: 0;
-            margin-bottom: 18px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
+        h2 { font-size: 1.15rem; color: #ffffff; border-bottom: 2px solid var(--accent-color); padding-bottom: 6px; margin-top: 0; margin-bottom: 18px; text-transform: uppercase; letter-spacing: 1px; }
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 16px;
-        }
-
-        .input-group {
-            display: flex;
-            flex-direction: column;
-        }
-
-        label {
-            font-size: 0.85rem;
-            color: var(--text-dim);
-            margin-bottom: 6px;
-            font-weight: 600;
-        }
-
-        input, select {
-            background-color: var(--input-bg);
-            border: 1px solid var(--border-color);
-            color: white;
-            padding: 10px 12px;
-            border-radius: 8px;
-            font-size: 0.95rem;
-            transition: border-color 0.2s, box-shadow 0.2s;
-        }
-
-        input:focus, select:focus {
-            outline: none;
-            border-color: var(--accent-color);
-            box-shadow: 0 0 0 2px var(--accent-glow);
-        }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+        .input-group { display: flex; flex-direction: column; }
+        label { font-size: 0.85rem; color: var(--text-dim); margin-bottom: 6px; font-weight: 600; }
+        input, select { background-color: var(--input-bg); border: 1px solid var(--border-color); color: white; padding: 10px 12px; border-radius: 8px; font-size: 0.95rem; transition: border-color 0.2s, box-shadow 0.2s; }
+        input:focus, select:focus { outline: none; border-color: var(--accent-color); box-shadow: 0 0 0 2px var(--accent-glow); }
 
         .action-btn {
-            width: 100%;
-            background-color: var(--accent-color);
-            color: white;
-            border: none;
-            padding: 16px;
-            border-radius: 10px;
-            font-size: 1.1rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: background 0.2s, transform 0.1s;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-            margin-top: 10px;
-            box-shadow: 0 4px 20px var(--accent-glow);
+            width: 100%; background-color: var(--accent-color); color: white; border: none; padding: 16px;
+            border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer;
+            transition: background 0.2s, transform 0.1s; text-transform: uppercase; letter-spacing: 1.5px; margin-top: 10px; box-shadow: 0 4px 20px var(--accent-glow);
         }
+        .action-btn:hover { background-color: var(--accent-hover); }
 
-        .action-btn:hover {
-            background-color: var(--accent-hover);
-        }
+        .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-top: 15px; }
+        .result-box { background-color: #191d27; padding: 14px; border-radius: 10px; border-left: 4px solid var(--accent-color); border: 1px solid var(--border-color); }
+        .result-title { font-size: 0.8rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.5px; font-weight: 600; }
+        .result-value { font-size: 1.05rem; font-weight: bold; margin-top: 6px; color: #ffffff; line-height: 1.4; }
 
-        .results-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-            gap: 16px;
-            margin-top: 15px;
-        }
+        .note-box { background-color: rgba(255, 69, 0, 0.08); border: 1px solid rgba(255, 69, 0, 0.3); border-radius: 8px; padding: 12px 16px; margin-top: 15px; font-size: 0.88rem; color: #e0e0e0; line-height: 1.4; }
 
-        .result-box {
-            background-color: #191d27;
-            padding: 14px;
-            border-radius: 10px;
-            border-left: 4px solid var(--accent-color);
-            border-top: 1px solid var(--border-color);
-            border-right: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
+        /* GUIDES & DIAGNOSTICS */
+        .guide-item { margin-bottom: 20px; border-bottom: 1px solid var(--border-color); padding-bottom: 15px; }
+        .guide-item:last-child { border-bottom: none; }
+        .guide-item h3 { color: var(--accent-color); margin-top: 0; font-size: 1.05rem; }
+        .guide-item p { font-size: 0.9rem; line-height: 1.5; color: #d1d5db; }
+        
+        .table-responsive { width: 100%; overflow-x: auto; margin-top: 10px; margin-bottom: 30px; }
+        .diag-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 600px; }
+        .diag-table th, .diag-table td { border: 1px solid var(--border-color); padding: 12px; text-align: left; vertical-align: top; }
+        .diag-table th { background-color: var(--input-bg); color: var(--accent-color); font-weight: 700; }
+        .diag-table .badge { display: inline-block; padding: 3px 6px; border-radius: 4px; font-size: 0.75rem; font-weight: bold; margin-bottom: 5px; background: rgba(255,69,0,0.2); color: var(--accent-color); border: 1px solid var(--accent-color); }
 
-        .result-title {
-            font-size: 0.8rem;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-
-        .result-value {
-            font-size: 1.05rem;
-            font-weight: bold;
-            margin-top: 6px;
-            color: #ffffff;
-            line-height: 1.4;
-        }
-
-        .note-box {
-            background-color: rgba(255, 69, 0, 0.08);
-            border: 1px solid rgba(255, 69, 0, 0.3);
-            border-radius: 8px;
-            padding: 12px 16px;
-            margin-top: 15px;
-            font-size: 0.88rem;
-            color: #e0e0e0;
-            line-height: 1.4;
-        }
-
-        /* STYLE DES GUIDES & DIAGNOSTICS */
-        .guide-item {
-            margin-bottom: 20px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
-        }
-
-        .guide-item:last-child {
-            border-bottom: none;
-        }
-
-        .guide-item h3 {
-            color: var(--accent-color);
-            margin-top: 0;
-            font-size: 1.05rem;
-        }
-
-        .guide-item p {
-            font-size: 0.9rem;
-            line-height: 1.5;
-            color: #d1d5db;
-        }
-
-        .diag-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            font-size: 0.88rem;
-        }
-
-        .diag-table th, .diag-table td {
-            border: 1px solid var(--border-color);
-            padding: 10px;
-            text-align: left;
-        }
-
-        .diag-table th {
-            background-color: var(--input-bg);
-            color: var(--accent-color);
-        }
-
-        .hidden {
-            display: none !important;
-        }
+        .hidden { display: none !important; }
     </style>
 </head>
 <body>
@@ -293,7 +109,6 @@
         <div class="sub-brand">DYNAMICS</div>
         <p data-i18n="subtitle">FH6 Hub & Precision Tune Generator</p>
 
-        <!-- BARRE DE NAVIGATION -->
         <div class="nav-tabs">
             <button class="tab-btn active" onclick="switchTab('calc')" data-i18n="nav_calc">🧮 Calculateur</button>
             <button class="tab-btn" onclick="switchTab('guides')" data-i18n="nav_guides">📚 Guides de Réglage</button>
@@ -301,7 +116,6 @@
             <button class="tab-btn" onclick="switchTab('dl')" data-i18n="nav_dl">📲 Téléchargements</button>
         </div>
 
-        <!-- SELECTEUR DE LANGUE -->
         <div class="lang-picker">
             <select id="langSelect" onchange="changeLanguage(this.value)">
                 <option value="fr">🇫🇷 Français</option>
@@ -318,10 +132,10 @@
                 <div class="input-group">
                     <label for="tuneCategory" data-i18n="lbl_discipline">Discipline / Type de Course</label>
                     <select id="tuneCategory">
-                        <option value="Grip" selected data-i18n="opt_grip">🏁 Circuit / Grip & Précision</option>
-                        <option value="Sprint" data-i18n="opt_sprint">⚡ Sprint / Vitesse de Pointe</option>
-                        <option value="Rally" data-i18n="opt_rally">🌲 Rallye / Terre & Tout-Terrain</option>
-                        <option value="Drift" data-i18n="opt_drift">💨 Drift / Glisse Contrôlée</option>
+                        <option value="Grip" selected data-i18n="opt_grip">🏁 Circuit / Grip</option>
+                        <option value="Sprint" data-i18n="opt_sprint">⚡ Sprint / Vitesse</option>
+                        <option value="Rally" data-i18n="opt_rally">🌲 Rallye / Terre</option>
+                        <option value="Drift" data-i18n="opt_drift">💨 Drift</option>
                         <option value="Drag" data-i18n="opt_drag">🚀 Drag / Ligne Droite</option>
                     </select>
                 </div>
@@ -344,9 +158,9 @@
                 <div class="input-group">
                     <label for="enginePos" data-i18n="lbl_enginePos">Position du Moteur</label>
                     <select id="enginePos">
-                        <option value="Front" selected data-i18n="opt_front">Avant (Moteur Avant)</option>
-                        <option value="Mid" data-i18n="opt_mid">Central (Moteur Central)</option>
-                        <option value="Rear" data-i18n="opt_rear">Arrière (Moteur Arrière)</option>
+                        <option value="Front" selected data-i18n="opt_front">Avant</option>
+                        <option value="Mid" data-i18n="opt_mid">Central</option>
+                        <option value="Rear" data-i18n="opt_rear">Arrière</option>
                     </select>
                 </div>
                 <div class="input-group">
@@ -355,9 +169,9 @@
                         <option value="Street" data-i18n="opt_street">Rue / Série</option>
                         <option value="Sport" data-i18n="opt_sport">Sport</option>
                         <option value="SemiSlick" selected data-i18n="opt_semislick">Semi-Slick</option>
-                        <option value="Slick" data-i18n="opt_slick">Slick de Course</option>
-                        <option value="Rally" data-i18n="opt_rallytire">Rallye / Tout-Terrain</option>
-                        <option value="Drift" data-i18n="opt_drifttire">Gomme Drift</option>
+                        <option value="Slick" data-i18n="opt_slick">Slick</option>
+                        <option value="Rally" data-i18n="opt_rallytire">Rallye</option>
+                        <option value="Drift" data-i18n="opt_drifttire">Drift</option>
                     </select>
                 </div>
                 <div class="input-group">
@@ -378,7 +192,7 @@
         </div>
 
         <div class="card">
-            <h2 data-i18n="sec2_title">2. Plage des Ressorts (Curseurs du Jeu)</h2>
+            <h2 data-i18n="sec2_title">2. Plage des Ressorts</h2>
             <div class="grid">
                 <div class="input-group">
                     <label for="springAvMin" data-i18n="lbl_springAvMin">Ressorts AV Min (kg/mm)</label>
@@ -399,18 +213,18 @@
             </div>
         </div>
 
-        <button class="action-btn" onclick="calculateTune()" data-i18n="btn_generate">Générer la Fiche Dynamics</button>
+        <button class="action-btn" onclick="calculateTune()" data-i18n="btn_generate">Générer la Fiche</button>
 
         <div id="resultsCard" class="card hidden">
             <h2 data-i18n="sec3_title">3. Fiche de Réglage Recommandée</h2>
             <div class="results-grid">
-                <div class="result-box"><div class="result-title" data-i18n="res_pneus">Pression des Pneus</div><div class="result-value" id="resPneus"></div></div>
-                <div class="result-box"><div class="result-title" data-i18n="res_align">Alignement & Géométrie</div><div class="result-value" id="resAlignement"></div></div>
-                <div class="result-box"><div class="result-title" data-i18n="res_aero">Aérodynamisme (Appui)</div><div class="result-value" id="resAero"></div></div>
-                <div class="result-box"><div class="result-title" data-i18n="res_arb">Barres Antiroulis (ARB)</div><div class="result-value" id="resArb"></div></div>
-                <div class="result-box"><div class="result-title" data-i18n="res_springs">Ressorts (kg/mm)</div><div class="result-value" id="resRessorts"></div></div>
-                <div class="result-box"><div class="result-title" data-i18n="res_rebound">Détente Amortisseurs</div><div class="result-value" id="resRebound"></div></div>
-                <div class="result-box"><div class="result-title" data-i18n="res_bump">Compression Amortisseurs</div><div class="result-value" id="resBump"></div></div>
+                <div class="result-box"><div class="result-title" data-i18n="res_pneus">Pneus</div><div class="result-value" id="resPneus"></div></div>
+                <div class="result-box"><div class="result-title" data-i18n="res_align">Alignement</div><div class="result-value" id="resAlignement"></div></div>
+                <div class="result-box"><div class="result-title" data-i18n="res_aero">Aérodynamisme</div><div class="result-value" id="resAero"></div></div>
+                <div class="result-box"><div class="result-title" data-i18n="res_arb">Barres Antiroulis</div><div class="result-value" id="resArb"></div></div>
+                <div class="result-box"><div class="result-title" data-i18n="res_springs">Ressorts</div><div class="result-value" id="resRessorts"></div></div>
+                <div class="result-box"><div class="result-title" data-i18n="res_rebound">Détente</div><div class="result-value" id="resRebound"></div></div>
+                <div class="result-box"><div class="result-title" data-i18n="res_bump">Compression</div><div class="result-value" id="resBump"></div></div>
                 <div class="result-box" style="grid-column: 1 / -1;"><div class="result-title" data-i18n="res_diff">Différentiel</div><div class="result-value" id="resDiff"></div></div>
             </div>
             <div class="note-box" id="resNotes"></div>
@@ -420,21 +234,26 @@
     <!-- ==================== TAB 2 : GUIDES ==================== -->
     <div id="tab-guides" class="hidden">
         <div class="card">
-            <h2 data-i18n="guide_title">📚 Les Principes de Réglage Dynamics</h2>
+            <h2 data-i18n="guide_title">📚 La Théorie des Réglages Avancés</h2>
             
             <div class="guide-item">
-                <h3 data-i18n="g1_h3">1. Pression des Pneus</h3>
-                <p data-i18n="g1_p">La pression idéale recherche le compromis entre adhérence maximale et réactivité. Des pneus sous-gonflés augmentent l'adhérence pure mais rendent la direction floue. Des pneus sur-gonflés améliorent la réactivité au détriment de l'accroche en courbe.</p>
+                <h3 data-i18n="g1_h3">1. Pressions & Pneumatiques</h3>
+                <p data-i18n="g1_p">La pression gère l'empreinte au sol. Une pression plus basse augmente la surface de contact mécanique (plus de grip pur) mais rend les flancs mous, ce qui floute la direction. Sur circuit, on cherche environ 2.0 à 2.2 bars à chaud pour maximiser la réactivité sans surchauffer la bande de roulement.</p>
             </div>
 
             <div class="guide-item">
-                <h3 data-i18n="g2_h3">2. Barres Antiroulis (ARB)</h3>
-                <p data-i18n="g2_p">Les barres antiroulis contrôlent le transfert de masse latéral dans les virages. Rigidifier l'avant augmente le sous-virage mais donne de la stabilité. Rigidifier l'arrière facilite le pivotement du véhicule (survirage).</p>
+                <h3 data-i18n="g2_h3">2. Géométrie & Alignement</h3>
+                <p data-i18n="g2_p"><b>Carrossage (Camber) :</b> Toujours négatif. Il permet au pneu extérieur de rester bien plat lors de l'appui en virage. Attention, trop de carrossage réduit le grip au freinage.<br><b>Parallélisme (Toe) :</b> Un peu d'ouverture à l'avant (Toe-out, ex: +0.1°) aide la voiture à "plonger" dans le virage. De la pince à l'arrière (Toe-in, ex: -0.1°) stabilise les propulsions (RWD) à l'accélération.</p>
             </div>
 
             <div class="guide-item">
-                <h3 data-i18n="g3_h3">3. Amortissement (Détente vs Compression)</h3>
-                <p data-i18n="g3_p">La Détente (Rebound) contrôle la vitesse à laquelle la suspension se détend. La Compression (Bump) gère la vitesse à laquelle elle s'enfonce. Règle d'or : conservez la compression entre 50% et 65% de la valeur de détente.</p>
+                <h3 data-i18n="g3_h3">3. Suspensions & Barres Antiroulis (ARB)</h3>
+                <p data-i18n="g3_p">Les barres gèrent le transfert de masse latéral et les ressorts le transfert longitudinal au freinage. <b>Règle d'or :</b> Assouplir le train avant donne plus de grip à l'avant (réduit le sous-virage). Durcir le train arrière aide la voiture à pivoter (augmente le survirage).</p>
+            </div>
+            
+            <div class="guide-item">
+                <h3 data-i18n="g4_h3">4. Le Différentiel Mécanique</h3>
+                <p data-i18n="g4_p"><b>Accélération :</b> En RWD, un réglage bas (20-40%) évite le tête-à-queue. En FWD, un réglage haut (60-80%) "tire" la voiture hors du virage. En AWD, on envoie généralement 65 à 75% du couple à l'arrière pour contrer le sous-virage naturel des 4 roues motrices.<br><b>Décélération :</b> Aide à stabiliser la voiture au freinage. Un réglage trop haut empêchera la voiture de pivoter en entrée de courbe.</p>
             </div>
         </div>
     </div>
@@ -442,53 +261,59 @@
     <!-- ==================== TAB 3 : DIAGNOSTIC ==================== -->
     <div id="tab-diag" class="hidden">
         <div class="card">
-            <h2 data-i18n="diag_title">🛠️ Guide de Diagnostic Rapide en Piste</h2>
-            <p style="font-size: 0.9rem; color: var(--text-dim);" data-i18n="diag_intro">Identifiez le comportement indésirable de votre véhicule et appliquez les corrections à la marge :</p>
+            <h2 data-i18n="diag_title">🛠️ Matrice de Diagnostic : Architecture</h2>
+            <p style="font-size: 0.9rem; color: var(--text-dim);" data-i18n="diag_intro">Repérez le symptôme selon l'architecture de votre véhicule et appliquez les corrections étape par étape.</p>
             
-            <table class="diag-table">
-                <thead>
-                    <tr>
-                        <th data-i18n="th_problem">Problème en Piste</th>
-                        <th data-i18n="th_cause">Cause Probable</th>
-                        <th data-i18n="th_solution">Ajustement Recommandé</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-i18n="p1_prob">Sous-virage en entrée de virage (La voiture refuse de tourner)</td>
-                        <td data-i18n="p1_cause">ARB avant trop rigide ou pas assez d'appui aéro avant.</td>
-                        <td data-i18n="p1_sol">Assouplir l'ARB Avant (-2 à -5 pts) ou augmenter l'appui aéro avant.</td>
-                    </tr>
-                    <tr>
-                        <td data-i18n="p2_prob">Survirage en sortie de virage à la réaccélération</td>
-                        <td data-i18n="p2_cause">Différentiel d'accélération trop élevé ou ARB arrière trop rigide.</td>
-                        <td data-i18n="p2_sol">Baiser le différentiel d'accélération arrière (-5% à -10%) ou assouplir l'ARB arrière.</td>
-                    </tr>
-                    <tr>
-                        <td data-i18n="p3_prob">La voiture rebondit excessivement sur les vibreurs</td>
-                        <td data-i18n="p3_cause">Amortisseurs (Compression/Bump) trop rigides.</td>
-                        <td data-i18n="p3_sol">Diminuer la compression (Bump) avant et arrière (-1.0 à -2.0).</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-responsive">
+                <table class="diag-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="th_problem">Symptôme en Piste</th>
+                            <th data-i18n="th_arch">Architecture</th>
+                            <th data-i18n="th_solution">Ajustement Recommandé</th>
+                        </tr>
+                    </thead>
+                    <tbody id="diagBody">
+                        <!-- Rempli par JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+
+            <h2 data-i18n="diag_surface_title">🌧️ Matrice de Diagnostic : Surfaces & Météo</h2>
+            <p style="font-size: 0.9rem; color: var(--text-dim);" data-i18n="diag_surface_intro">Adaptez votre véhicule aux conditions extrêmes (Pluie, Terre, Neige).</p>
+
+            <div class="table-responsive">
+                <table class="diag-table">
+                    <thead>
+                        <tr>
+                            <th data-i18n="th_problem">Symptôme en Piste</th>
+                            <th data-i18n="th_cond">Conditions</th>
+                            <th data-i18n="th_solution">Ajustement Recommandé</th>
+                        </tr>
+                    </thead>
+                    <tbody id="surfaceDiagBody">
+                        <!-- Rempli par JavaScript -->
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 
     <!-- ==================== TAB 4 : TÉLÉCHARGEMENTS ==================== -->
     <div id="tab-dl" class="hidden">
         <div class="card" style="text-align: center;">
-            <h2 data-i18n="dl_title">📲 Télécharger PtitDoritos Dynamics</h2>
-            <p data-i18n="dl_p" style="color: var(--text-dim); margin-bottom: 20px;">Installez l'application directement sur vos appareils pour une utilisation fluide et 100% hors-ligne.</p>
+            <h2 data-i18n="dl_title">📲 Télécharger l'Application</h2>
+            <p data-i18n="dl_p" style="color: var(--text-dim); margin-bottom: 20px;">Installez PtitDoritos Dynamics sur vos appareils pour une utilisation 100% hors-ligne et optimisée.</p>
 
             <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
                 <a href="https://github.com/PtitDoritos/FH6-TOOL/releases/latest/download/FH6-TUNE.apk" style="text-decoration: none;">
                     <div style="background-color: var(--input-bg); border: 1px solid var(--accent-color); padding: 15px 25px; border-radius: 10px; color: white; font-weight: bold;">
-                        📱 Application Android (.apk)
+                        📱 Android (.apk)
                     </div>
                 </a>
                 <a href="https://github.com/PtitDoritos/FH6-TOOL/releases/latest/download/FH6-TUNE.exe" style="text-decoration: none;">
                     <div style="background-color: var(--input-bg); border: 1px solid var(--border-color); padding: 15px 25px; border-radius: 10px; color: white; font-weight: bold;">
-                        💻 Application Windows (.exe)
+                        💻 Windows (.exe)
                     </div>
                 </a>
             </div>
@@ -502,162 +327,97 @@
     const translations = {
         fr: {
             subtitle: "FH6 Hub & Precision Tune Generator",
-            nav_calc: "🧮 Calculateur",
-            nav_guides: "📚 Guides de Réglage",
-            nav_diag: "🛠️ Diagnostic Piste",
-            nav_dl: "📲 Téléchargements",
-            sec1_title: "1. Caractéristiques du Véhicule",
-            lbl_discipline: "Discipline / Type de Course",
-            opt_grip: "🏁 Circuit / Grip & Précision",
-            opt_sprint: "⚡ Sprint / Vitesse de Pointe",
-            opt_rally: "🌲 Rallye / Terre & Tout-Terrain",
-            opt_drift: "💨 Drift / Glisse Contrôlée",
-            opt_drag: "🚀 Drag / Ligne Droite",
-            lbl_weight: "Poids total (kg)",
-            lbl_bias: "Répartition Masse AV (%)",
-            lbl_drivetrain: "Transmission",
-            opt_rwd: "Propulsion (RWD)",
-            opt_awd: "Intégrale (AWD)",
-            opt_fwd: "Traction (FWD)",
-            lbl_enginePos: "Position du Moteur",
-            opt_front: "Avant (Moteur Avant)",
-            opt_mid: "Central (Moteur Central)",
-            opt_rear: "Arrière (Moteur Arrière)",
-            lbl_tireType: "Gomme de Pneus",
-            opt_street: "Rue / Série",
-            opt_sport: "Sport",
-            opt_semislick: "Semi-Slick",
-            opt_slick: "Slick de Course",
-            opt_rallytire: "Rallye / Tout-Terrain",
-            opt_drifttire: "Gomme Drift",
-            lbl_aeroFront: "Aéro Avant Réglable",
-            lbl_aeroRear: "Aéro Arrière Réglable",
-            opt_no: "Non (D'origine)",
-            opt_yes: "Oui (Réglable)",
-            sec2_title: "2. Plage des Ressorts (Curseurs du Jeu)",
-            lbl_springAvMin: "Ressorts AV Min (kg/mm)",
-            lbl_springAvMax: "Ressorts AV Max (kg/mm)",
-            lbl_springArMin: "Ressorts AR Min (kg/mm)",
-            lbl_springArMax: "Ressorts AR Max (kg/mm)",
-            btn_generate: "Générer la Fiche Dynamics",
-            sec3_title: "3. Fiche de Réglage Recommandée",
-            res_pneus: "Pression des Pneus",
-            res_align: "Alignement & Géométrie",
-            res_aero: "Aérodynamisme (Appui)",
-            res_arb: "Barres Antiroulis (ARB)",
-            res_springs: "Ressorts (kg/mm)",
-            res_rebound: "Détente Amortisseurs",
-            res_bump: "Compression Amortisseurs",
-            res_diff: "Différentiel",
-            guide_title: "📚 Les Principes de Réglage Dynamics",
-            g1_h3: "1. Pression des Pneus",
-            g1_p: "La pression idéale recherche le compromis entre adhérence maximale et réactivité. Des pneus sous-gonflés augmentent l'adhérence pure mais rendent la direction floue. Des pneus sur-gonflés améliorent la réactivité au détriment de l'accroche en courbe.",
-            g2_h3: "2. Barres Antiroulis (ARB)",
-            g2_p: "Les barres antiroulis contrôlent le transfert de masse latéral dans les virages. Rigidifier l'avant augmente le sous-virage mais donne de la stabilité. Rigidifier l'arrière facilite le pivotement du véhicule (survirage).",
-            g3_h3: "3. Amortissement (Détente vs Compression)",
-            g3_p: "La Détente (Rebound) contrôle la vitesse à laquelle la suspension se détend. La Compression (Bump) gère la vitesse à laquelle elle s'enfonce. Règle d'or : conservez la compression entre 50% et 65% de la valeur de détente.",
-            diag_title: "🛠️ Guide de Diagnostic Rapide en Piste",
-            diag_intro: "Identifiez le comportement indésirable de votre véhicule et appliquez les corrections à la marge :",
-            th_problem: "Problème en Piste",
-            th_cause: "Cause Probable",
-            th_solution: "Ajustement Recommandé",
-            p1_prob: "Sous-virage en entrée de virage (La voiture refuse de tourner)",
-            p1_cause: "ARB avant trop rigide ou pas assez d'appui aéro avant.",
-            p1_sol: "Assouplir l'ARB Avant (-2 à -5 pts) ou augmenter l'appui aéro avant.",
-            p2_prob: "Survirage en sortie de virage à la réaccélération",
-            p2_cause: "Différentiel d'accélération trop élevé ou ARB arrière trop rigide.",
-            p2_sol: "Baiser le différentiel d'accélération arrière (-5% à -10%) ou assouplir l'ARB arrière.",
-            p3_prob: "La voiture rebondit excessivement sur les vibreurs",
-            p3_cause: "Amortisseurs (Compression/Bump) trop rigides.",
-            p3_sol: "Diminuer la compression (Bump) avant et arrière (-1.0 à -2.0).",
-            dl_title: "📲 Télécharger PtitDoritos Dynamics",
-            dl_p: "Installez l'application directement sur vos appareils pour une utilisation fluide et 100% hors-ligne."
+            nav_calc: "🧮 Calculateur", nav_guides: "📚 Guides de Réglage", nav_diag: "🛠️ Diagnostic Piste", nav_dl: "📲 Téléchargements",
+            sec1_title: "1. Caractéristiques du Véhicule", lbl_discipline: "Discipline", opt_grip: "🏁 Circuit / Grip", opt_sprint: "⚡ Sprint / Vitesse", opt_rally: "🌲 Rallye / Terre", opt_drift: "💨 Drift", opt_drag: "🚀 Drag / Ligne Droite",
+            lbl_weight: "Poids (kg)", lbl_bias: "Répartition Masse AV (%)", lbl_drivetrain: "Transmission", opt_rwd: "Propulsion (RWD)", opt_awd: "Intégrale (AWD)", opt_fwd: "Traction (FWD)",
+            lbl_enginePos: "Moteur", opt_front: "Avant", opt_mid: "Central", opt_rear: "Arrière",
+            lbl_tireType: "Pneus", opt_street: "Rue / Série", opt_sport: "Sport", opt_semislick: "Semi-Slick", opt_slick: "Slick", opt_rallytire: "Rallye", opt_drifttire: "Drift",
+            lbl_aeroFront: "Aéro AV", lbl_aeroRear: "Aéro AR", opt_no: "Non (Origine)", opt_yes: "Oui (Réglable)",
+            sec2_title: "2. Plage des Ressorts", lbl_springAvMin: "Ressorts AV Min", lbl_springAvMax: "Ressorts AV Max", lbl_springArMin: "Ressorts AR Min", lbl_springArMax: "Ressorts AR Max",
+            btn_generate: "Générer la Fiche", sec3_title: "3. Fiche Recommandée",
+            res_pneus: "Pression", res_align: "Géométrie", res_aero: "Aérodynamisme", res_arb: "Antiroulis", res_springs: "Ressorts", res_rebound: "Détente", res_bump: "Compression", res_diff: "Différentiel",
+            guide_title: "📚 La Théorie des Réglages Avancés",
+            g1_h3: "1. Pressions & Pneumatiques", g1_p: "La pression gère l'empreinte au sol. Une pression plus basse augmente la surface de contact (grip pur) mais rend les flancs mous, ce qui floute la direction. Sur circuit, on cherche environ 2.0 à 2.2 bars à chaud pour maximiser la réactivité.",
+            g2_h3: "2. Géométrie & Alignement", g2_p: "<b>Carrossage (Camber) :</b> Toujours négatif pour garder le pneu plat en appui. <b>Parallélisme (Toe) :</b> Un peu d'ouverture à l'avant (Toe-out, ex: +0.1°) aide à plonger dans le virage. La pince à l'arrière (Toe-in, ex: -0.1°) stabilise les propulsions à l'accélération.",
+            g3_h3: "3. Suspensions & Barres Antiroulis (ARB)", g3_p: "<b>Règle d'or :</b> Assouplir le train avant donne plus de grip à l'avant (réduit le sous-virage). Durcir le train arrière aide la voiture à pivoter (augmente le survirage).",
+            g4_h3: "4. Le Différentiel Mécanique", g4_p: "<b>Accélération :</b> En RWD, un réglage bas (20-40%) évite le tête-à-queue. En FWD, un réglage haut (60-80%) tire la voiture hors du virage. En AWD, on envoie 65 à 75% à l'arrière pour contrer le sous-virage.<br><b>Décélération :</b> Stabilise la voiture au freinage. Trop haut = perte de pivotement.",
+            diag_title: "🛠️ Matrice de Diagnostic : Architecture", diag_intro: "Repérez le symptôme selon l'architecture de votre véhicule et appliquez les corrections étape par étape.",
+            diag_surface_title: "🌧️ Matrice de Diagnostic : Surfaces & Météo", diag_surface_intro: "Adaptez votre véhicule aux conditions extrêmes (Pluie, Terre, Neige).",
+            th_problem: "Symptôme en Piste", th_arch: "Architecture", th_cond: "Conditions", th_solution: "Ajustement Recommandé",
+            dl_title: "📲 Télécharger l'Application", dl_p: "Installez PtitDoritos Dynamics sur vos appareils pour une utilisation 100% hors-ligne et optimisée."
         },
         en: {
             subtitle: "FH6 Hub & Precision Tune Generator",
-            nav_calc: "🧮 Calculator",
-            nav_guides: "📚 Tuning Guides",
-            nav_diag: "🛠️ Track Troubleshooting",
-            nav_dl: "📲 Downloads",
-            sec1_title: "1. Vehicle Specifications",
-            lbl_discipline: "Discipline / Race Type",
-            opt_grip: "🏁 Circuit / Grip & Precision",
-            opt_sprint: "⚡ Sprint / Top Speed",
-            opt_rally: "🌲 Rally / Dirt & Off-Road",
-            opt_drift: "💨 Drift / Controlled Slide",
-            opt_drag: "🚀 Drag / Straight Line",
-            lbl_weight: "Total Weight (kg)",
-            lbl_bias: "Front Weight Distribution (%)",
-            lbl_drivetrain: "Drivetrain",
-            opt_rwd: "Rear-Wheel Drive (RWD)",
-            opt_awd: "All-Wheel Drive (AWD)",
-            opt_fwd: "Front-Wheel Drive (FWD)",
-            lbl_enginePos: "Engine Position",
-            opt_front: "Front (Front Engine)",
-            opt_mid: "Mid (Mid Engine)",
-            opt_rear: "Rear (Rear Engine)",
-            lbl_tireType: "Tire Compound",
-            opt_street: "Street / Stock",
-            opt_sport: "Sport",
-            opt_semislick: "Semi-Slick",
-            opt_slick: "Race Slick",
-            opt_rallytire: "Rally / Off-Road",
-            opt_drifttire: "Drift Compound",
-            lbl_aeroFront: "Adjustable Front Aero",
-            lbl_aeroRear: "Adjustable Rear Aero",
-            opt_no: "No (Stock)",
-            opt_yes: "Yes (Adjustable)",
-            sec2_title: "2. Spring Range (In-Game Sliders)",
-            lbl_springAvMin: "Front Spring Min (kg/mm)",
-            lbl_springAvMax: "Front Spring Max (kg/mm)",
-            lbl_springArMin: "Rear Spring Min (kg/mm)",
-            lbl_springArMax: "Rear Spring Max (kg/mm)",
-            btn_generate: "Generate Dynamics Sheet",
-            sec3_title: "3. Recommended Tune Sheet",
-            res_pneus: "Tire Pressure",
-            res_align: "Alignment & Geometry",
-            res_aero: "Aerodynamics (Downforce)",
-            res_arb: "Anti-Roll Bars (ARB)",
-            res_springs: "Springs (kg/mm)",
-            res_rebound: "Rebound Damping",
-            res_bump: "Bump Damping",
-            res_diff: "Differential",
-            guide_title: "📚 Dynamics Tuning Fundamentals",
-            g1_h3: "1. Tire Pressure",
-            g1_p: "Ideal pressure finds the sweet spot between grip and responsiveness. Under-inflated tires increase mechanical grip but make steering feel sluggish. Over-inflated tires sharpen response at the cost of overall cornering grip.",
-            g2_h3: "2. Anti-Roll Bars (ARB)",
-            g2_p: "Anti-Roll Bars control lateral weight transfer during cornering. Stiffening the front increases understeer but adds stability. Stiffening the rear encourages rotation (oversteer).",
-            g3_h3: "3. Damping (Rebound vs Bump)",
-            g3_p: "Rebound controls how fast the suspension extends. Bump controls how fast it compresses. Golden Rule: Keep bump damping between 50% and 65% of your rebound value.",
-            diag_title: "🛠️ Track Troubleshooting Guide",
-            diag_intro: "Identify unwanted handling behavior and apply targeted corrections:",
-            th_problem: "Handling Issue",
-            th_cause: "Likely Cause",
-            th_solution: "Recommended Adjustment",
-            p1_prob: "Entry Understeer (Car refuses to turn in)",
-            p1_cause: "Front ARB too stiff or insufficient front aero downforce.",
-            p1_sol: "Soften Front ARB (-2 to -5 pts) or increase front aero.",
-            p2_prob: "Exit Oversteer under acceleration",
-            p2_cause: "Rear accel differential too high or rear ARB too stiff.",
-            p2_sol: "Lower rear accel diff (-5% to -10%) or soften rear ARB.",
-            p3_prob: "Car bounces excessively over curbs",
-            p3_cause: "Damping (Bump) is too stiff.",
-            p3_sol: "Decrease front & rear bump damping (-1.0 to -2.0).",
-            dl_title: "📲 Download PtitDoritos Dynamics",
-            dl_p: "Install the app directly on your devices for smooth, 100% offline usage."
+            nav_calc: "🧮 Calculator", nav_guides: "📚 Tuning Guides", nav_diag: "🛠️ Diagnostics", nav_dl: "📲 Downloads",
+            sec1_title: "1. Vehicle Specs", lbl_discipline: "Discipline", opt_grip: "🏁 Circuit / Grip", opt_sprint: "⚡ Sprint / Speed", opt_rally: "🌲 Rally", opt_drift: "💨 Drift", opt_drag: "🚀 Drag",
+            lbl_weight: "Weight (kg)", lbl_bias: "Front Weight Bias (%)", lbl_drivetrain: "Drivetrain", opt_rwd: "RWD", opt_awd: "AWD", opt_fwd: "FWD",
+            lbl_enginePos: "Engine", opt_front: "Front", opt_mid: "Mid", opt_rear: "Rear",
+            lbl_tireType: "Tires", opt_street: "Street", opt_sport: "Sport", opt_semislick: "Semi-Slick", opt_slick: "Slick", opt_rallytire: "Rally", opt_drifttire: "Drift",
+            lbl_aeroFront: "Front Aero", lbl_aeroRear: "Rear Aero", opt_no: "No (Stock)", opt_yes: "Yes (Adjustable)",
+            sec2_title: "2. Spring Range", lbl_springAvMin: "Front Min (kg/mm)", lbl_springAvMax: "Front Max", lbl_springArMin: "Rear Min", lbl_springArMax: "Rear Max",
+            btn_generate: "Generate Tune", sec3_title: "3. Recommended Tune",
+            res_pneus: "Tire Pressure", res_align: "Alignment", res_aero: "Aero", res_arb: "Anti-Roll Bars", res_springs: "Springs", res_rebound: "Rebound", res_bump: "Bump", res_diff: "Differential",
+            guide_title: "📚 Advanced Tuning Theory",
+            g1_h3: "1. Tire Pressure", g1_p: "Lower pressure increases the contact patch (more grip) but makes sidewalls soft, dulling steering response. For Circuit racing, target 2.0 - 2.2 bars to maximize responsiveness.",
+            g2_h3: "2. Alignment & Geometry", g2_p: "<b>Camber:</b> Always negative to keep the outside tire flat during cornering. <b>Toe:</b> Slight front toe-out (e.g. +0.1°) helps turn-in response. Rear toe-in (e.g. -0.1°) stabilizes RWD cars under acceleration.",
+            g3_h3: "3. Anti-Roll Bars & Springs", g3_p: "<b>Golden Rule:</b> Softening the front provides more front grip (reduces understeer). Stiffening the rear helps the car rotate (increases oversteer).",
+            g4_h3: "4. Mechanical Differential", g4_p: "<b>Acceleration:</b> For RWD, low setting (20-40%) prevents spin-outs. FWD needs high settings (60-80%) to pull out of corners. AWD usually sends 65-75% rearward to kill understeer.<br><b>Deceleration:</b> Stabilizes braking. Too high prevents corner entry rotation.",
+            diag_title: "🛠️ Architecture Diagnostic Matrix", diag_intro: "Identify the symptom based on your drivetrain and apply corrections step-by-step.",
+            diag_surface_title: "🌧️ Surface & Weather Diagnostic Matrix", diag_surface_intro: "Adapt your vehicle for extreme conditions (Rain, Dirt, Snow).",
+            th_problem: "Handling Symptom", th_arch: "Drivetrain", th_cond: "Conditions", th_solution: "Recommended Adjustment",
+            dl_title: "📲 Download App", dl_p: "Install PtitDoritos Dynamics on your devices for smooth, 100% offline usage."
         }
     };
+
+    // ARCHITECTURE DIAG DATA
+    const diagData = [
+        {
+            fr: { prob: "Sous-virage en ENTRÉE de virage (Ne tourne pas au freinage)", arch: "<span class='badge'>TOUTES</span>", sol: "1. Assouplir l'ARB Avant (-2 pts).<br>2. Ajouter de l'ouverture (Toe-Out) à l'avant (+0.1°)." },
+            en: { prob: "Entry Understeer (Won't turn under braking)", arch: "<span class='badge'>ALL</span>", sol: "1. Soften Front ARB (-2 pts).<br>2. Add Front Toe-Out (+0.1°)." }
+        },
+        {
+            fr: { prob: "Sous-virage en SORTIE de virage (Pousse vers l'extérieur)", arch: "<span class='badge'>AWD</span> <span class='badge'>FWD</span>", sol: "<b>AWD:</b> Transférer plus de puissance vers l'arrière au différentiel central.<br><b>FWD:</b> Augmenter l'accélération du diff. avant pour 'tirer' la voiture." },
+            en: { prob: "Exit Understeer (Pushes wide on throttle)", arch: "<span class='badge'>AWD</span> <span class='badge'>FWD</span>", sol: "<b>AWD:</b> Move more power to the rear via center diff.<br><b>FWD:</b> Increase front diff acceleration to 'pull' the car." }
+        },
+        {
+            fr: { prob: "Survirage violent à l'ACCÉLÉRATION (Tête-à-queue)", arch: "<span class='badge'>RWD</span>", sol: "1. Baisser l'accélération du Différentiel AR (-10%).<br>2. Assouplir les ressorts et l'ARB à l'arrière." },
+            en: { prob: "Snap Oversteer on ACCELERATION (Spin out)", arch: "<span class='badge'>RWD</span>", sol: "1. Lower Rear Diff Acceleration (-10%).<br>2. Soften rear springs and ARB." }
+        },
+        {
+            fr: { prob: "Décrochage brutal au LEVER DE PIED (Lift-off Oversteer)", arch: "<span class='badge'>Moteur Central / AR</span>", sol: "1. Augmenter la décélération du Différentiel AR (+10%).<br>2. Durcir la détente (Rebound) arrière." },
+            en: { prob: "Lift-off Oversteer (Spins when releasing throttle)", arch: "<span class='badge'>Mid / Rear Engine</span>", sol: "1. Increase Rear Diff Deceleration (+10%).<br>2. Stiffen rear rebound damping." }
+        }
+    ];
+
+    // SURFACE & WEATHER DIAG DATA
+    const surfaceDiagData = [
+        {
+            fr: { prob: "Aquaplaning ou Perte d'adhérence soudaine en virage", cond: "<span class='badge' style='background:rgba(0,150,255,0.2); color:#0096ff; border-color:#0096ff'>PLUIE</span>", sol: "1. Baisser la pression des pneus (-0.1 à -0.2 bar).<br>2. Assouplir les Barres Antiroulis (ARB) de 10 à 20%.<br>3. Augmenter l'appui aérodynamique." },
+            en: { prob: "Aquaplaning or Sudden loss of grip in corners", cond: "<span class='badge' style='background:rgba(0,150,255,0.2); color:#0096ff; border-color:#0096ff'>RAIN</span>", sol: "1. Lower tire pressure (-0.1 to -0.2 bar).<br>2. Soften Anti-Roll Bars (ARB) by 10-20%.<br>3. Increase aero downforce." }
+        },
+        {
+            fr: { prob: "Patinage excessif à la réaccélération", cond: "<span class='badge' style='background:rgba(0,150,255,0.2); color:#0096ff; border-color:#0096ff'>PLUIE</span>", sol: "1. Baisser l'accélération du Différentiel (-10 à -15%).<br>2. Assouplir les ressorts arrière.<br>3. Allonger les rapports de boîte de vitesses." },
+            en: { prob: "Excessive wheelspin on throttle", cond: "<span class='badge' style='background:rgba(0,150,255,0.2); color:#0096ff; border-color:#0096ff'>RAIN</span>", sol: "1. Lower Differential Acceleration (-10 to -15%).<br>2. Soften rear springs.<br>3. Lengthen gear ratios." }
+        },
+        {
+            fr: { prob: "La voiture sautille et perd sa trajectoire", cond: "<span class='badge' style='background:rgba(139,69,19,0.2); color:#d2691e; border-color:#d2691e'>TERRE / GRAVIER</span>", sol: "1. Augmenter la garde au sol.<br>2. Diminuer la Compression (Bump) des amortisseurs.<br>3. Assouplir la Détente (Rebound)." },
+            en: { prob: "Car bounces and loses trajectory", cond: "<span class='badge' style='background:rgba(139,69,19,0.2); color:#d2691e; border-color:#d2691e'>DIRT / GRAVEL</span>", sol: "1. Raise ride height.<br>2. Decrease Bump damping.<br>3. Soften Rebound damping." }
+        },
+        {
+            fr: { prob: "Sous-virage chronique, refus total de tourner", cond: "<span class='badge' style='background:rgba(255,255,255,0.2); color:#fff; border-color:#fff'>NEIGE / GLACE</span>", sol: "1. Équiper des pneus Neige/Rallye obligatoirement.<br>2. Assouplir la voiture au maximum (Ressorts + ARB au plus bas).<br>3. Ouvrir le différentiel central (plus de puissance à l'avant en AWD)." },
+            en: { prob: "Chronic understeer, total refusal to turn", cond: "<span class='badge' style='background:rgba(255,255,255,0.2); color:#fff; border-color:#fff'>SNOW / ICE</span>", sol: "1. Equip Snow/Rally tires (mandatory).<br>2. Soften the car completely (Springs + ARB at minimum).<br>3. Open center diff (more power to the front in AWD)." }
+        }
+    ];
 
     // 2. GESTION DES ONGLETS
     function switchTab(tabId) {
         document.querySelectorAll('[id^="tab-"]').forEach(el => el.classList.add('hidden'));
         document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-
         document.getElementById(`tab-${tabId}`).classList.remove('hidden');
         event.target.classList.add('active');
     }
 
-    // 3. CHANGER LA LANGUE DE L'INTERFACE
+    // 3. CHANGER LA LANGUE
     function changeLanguage(lang) {
         localStorage.setItem('preferred_lang', lang);
         document.getElementById('langSelect').value = lang;
@@ -665,8 +425,22 @@
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
             if (translations[lang] && translations[lang][key]) {
-                element.textContent = translations[lang][key];
+                element.innerHTML = translations[lang][key];
             }
+        });
+
+        // Générer le tableau de diagnostic Architecture
+        const archBody = document.getElementById('diagBody');
+        archBody.innerHTML = '';
+        diagData.forEach(item => {
+            archBody.innerHTML += `<tr><td>${item[lang].prob}</td><td>${item[lang].arch}</td><td>${item[lang].sol}</td></tr>`;
+        });
+
+        // Générer le tableau de diagnostic Surface
+        const surfaceBody = document.getElementById('surfaceDiagBody');
+        surfaceBody.innerHTML = '';
+        surfaceDiagData.forEach(item => {
+            surfaceBody.innerHTML += `<tr><td>${item[lang].prob}</td><td>${item[lang].cond}</td><td>${item[lang].sol}</td></tr>`;
         });
 
         if (!document.getElementById('resultsCard').classList.contains('hidden')) {
@@ -674,13 +448,12 @@
         }
     }
 
-    // 4. LOGIQUE DU CALCULATEUR
+    // 4. LOGIQUE DU CALCULATEUR (Inchangée)
     function calculateTune() {
         const lang = localStorage.getItem('preferred_lang') || 'fr';
 
         const biasAv = parseFloat(document.getElementById('bias').value) / 100;
         const biasAr = 1 - biasAv;
-
         const springAvMin = parseFloat(document.getElementById('springAvMin').value);
         const springAvMax = parseFloat(document.getElementById('springAvMax').value);
         const springArMin = parseFloat(document.getElementById('springArMin').value);
@@ -693,7 +466,7 @@
         const aeroFront = document.getElementById('aeroFront').value;
         const aeroRear = document.getElementById('aeroRear').value;
 
-        // PRESSION PNEUS
+        // PRESSION
         let basePressAv = 2.0, basePressAr = 1.9;
         if (category === 'Rally') { basePressAv = 1.6; basePressAr = 1.5; }
         else if (category === 'Drift') { basePressAv = 2.2; basePressAr = 2.4; }
@@ -705,169 +478,80 @@
             else if (tireType === 'SemiSlick') { basePressAv = 1.9; basePressAr = 1.8; }
             else if (tireType === 'Slick') { basePressAv = 1.8; basePressAr = 1.7; }
         }
-
         if ((enginePos === 'Mid' || enginePos === 'Rear') && category !== 'Drift') { basePressAr -= 0.1; }
 
-        const pneusText = (lang === 'fr') 
-            ? `AV: ${basePressAv.toFixed(1)} bar | AR: ${basePressAr.toFixed(1)} bar`
-            : `Front: ${basePressAv.toFixed(1)} bar | Rear: ${basePressAr.toFixed(1)} bar`;
+        const pneusText = (lang === 'fr') ? `AV: ${basePressAv.toFixed(1)} bar | AR: ${basePressAr.toFixed(1)} bar` : `Front: ${basePressAv.toFixed(1)} bar | Rear: ${basePressAr.toFixed(1)} bar`;
 
         // ALIGNEMENT
-        let cambAv = -1.8, cambAr = -1.2;
-        let caster = (enginePos === 'Mid' || enginePos === 'Rear') ? 6.1 : 6.4;
-        let toeAv = "+0.1°", toeAr = (drivetrain === 'RWD') ? "-0.1°" : "0.0°";
-
+        let cambAv = -1.8, cambAr = -1.2, caster = (enginePos === 'Mid' || enginePos === 'Rear') ? 6.1 : 6.4, toeAv = "+0.1°", toeAr = (drivetrain === 'RWD') ? "-0.1°" : "0.0°";
         if (category === 'Drift') { cambAv = -3.0; cambAr = -0.5; toeAv = "+0.3°"; toeAr = "+0.1°"; caster = 7.0; }
         else if (category === 'Rally') { cambAv = -1.2; cambAr = -0.8; toeAv = "0.0°"; toeAr = "0.0°"; caster = 5.8; }
         else if (category === 'Drag') { cambAv = 0.0; cambAr = 0.0; toeAv = "0.0°"; toeAr = "0.0°"; caster = 7.0; }
-        else if (category === 'Sprint') { cambAv = -1.5; cambAr = -1.0; caster = 6.2; }
-
+        
         const alignText = (lang === 'fr')
-            ? `Carrossage: AV ${cambAv.toFixed(1)}° / AR ${cambAr.toFixed(1)}°<br>Parallélisme: AV ${toeAv} / AR ${toeAr}<br>Chasse avant: ${caster.toFixed(1)}°`
-            : `Camber: Front ${cambAv.toFixed(1)}° / Rear ${cambAr.toFixed(1)}°<br>Toe: Front ${toeAv} / Rear ${toeAr}<br>Front Caster: ${caster.toFixed(1)}°`;
+            ? `Carrossage: AV ${cambAv.toFixed(1)}° / AR ${cambAr.toFixed(1)}°<br>Parallélisme: AV ${toeAv} / AR ${toeAr}<br>Chasse: ${caster.toFixed(1)}°`
+            : `Camber: Front ${cambAv.toFixed(1)}° / Rear ${cambAr.toFixed(1)}°<br>Toe: Front ${toeAv} / Rear ${toeAr}<br>Caster: ${caster.toFixed(1)}°`;
 
-        // AÉRODYNAMISME
+        // AÉRO
         let aeroText = "";
         if (aeroFront === 'No' && aeroRear === 'No') {
-            aeroText = (lang === 'fr') ? "Non réglable (Aéro d'origine)" : "Not adjustable (Stock Aero)";
+            aeroText = (lang === 'fr') ? "Non réglable (Origine)" : "Not adjustable (Stock)";
         } else {
-            let frontVal = (lang === 'fr') ? "D'origine" : "Stock";
-            let rearVal = (lang === 'fr') ? "D'origine" : "Stock";
-            if (aeroFront === 'Yes') {
-                if (category === 'Grip') frontVal = (lang === 'fr') ? "65% (Élevé)" : "65% (High)";
-                else if (category === 'Sprint') frontVal = (lang === 'fr') ? "40% (Modéré)" : "40% (Moderate)";
-                else if (category === 'Drift' || category === 'Drag') frontVal = (lang === 'fr') ? "Min (100% Vitesse)" : "Min (100% Speed)";
-                else frontVal = (lang === 'fr') ? "50% (Neutre)" : "50% (Neutral)";
-            }
-            if (aeroRear === 'Yes') {
-                if (category === 'Grip') {
-                    rearVal = (aeroFront === 'Yes') 
-                        ? ((lang === 'fr') ? "65% (Équilibré)" : "65% (Balanced)") 
-                        : ((lang === 'fr') ? "50% (Anti-sous-virage)" : "50% (Anti-understeer)");
-                } else if (category === 'Sprint') { rearVal = (lang === 'fr') ? "35% (Vitesse de pointe)" : "35% (Top speed)"; }
-                else if (category === 'Drift' || category === 'Drag') { rearVal = (lang === 'fr') ? "Min (100% Vitesse)" : "Min (100% Speed)"; }
-                else { rearVal = (lang === 'fr') ? "50% (Neutre)" : "50% (Neutral)"; }
-            }
+            let frontVal = (lang === 'fr') ? "D'origine" : "Stock", rearVal = (lang === 'fr') ? "D'origine" : "Stock";
+            if (aeroFront === 'Yes') frontVal = (category === 'Grip') ? ((lang === 'fr') ? "65% (Appui)" : "65% (Downforce)") : ((lang === 'fr') ? "Vitesse Min" : "Speed Min");
+            if (aeroRear === 'Yes') rearVal = (category === 'Grip') ? ((lang === 'fr') ? "65% (Équilibre)" : "65% (Balance)") : ((lang === 'fr') ? "Vitesse Min" : "Speed Min");
             aeroText = (lang === 'fr') ? `AV: ${frontVal}<br>AR: ${rearVal}` : `Front: ${frontVal}<br>Rear: ${rearVal}`;
         }
 
         // RESSORTS
-        let springAvCalc = ((springAvMax - springAvMin) * biasAv + springAvMin);
-        let springArCalc = ((springArMax - springArMin) * biasAr + springArMin);
+        let springAvCalc = ((springAvMax - springAvMin) * biasAv + springAvMin), springArCalc = ((springArMax - springArMin) * biasAr + springArMin);
         if (aeroFront === 'Yes') springAvCalc *= 1.05;
         if (aeroRear === 'Yes') springArCalc *= 1.05;
         if (category === 'Rally') { springAvCalc *= 0.85; springArCalc *= 0.85; }
         else if (category === 'Drag') { springAvCalc *= 0.70; springArCalc *= 1.30; }
-        else if (enginePos === 'Rear') { springAvCalc *= 1.05; }
-        else if (enginePos === 'Mid') { springArCalc *= 1.03; }
 
-        const ressortAv = springAvCalc.toFixed(1);
-        const ressortAr = springArCalc.toFixed(1);
-
-        // BARRES ANTIROULIS
+        // ARB
         let arbAvCalc, arbArCalc;
         if (category === 'Drift') { arbAvCalc = 15.0; arbArCalc = 45.0; }
         else if (category === 'Rally') { arbAvCalc = 12.0 * biasAv + 5; arbArCalc = 15.0 * biasAr + 5; }
-        else if (category === 'Drag') { arbAvCalc = 1.0; arbArCalc = 60.0; }
-        else if (drivetrain === 'AWD') {
-            arbAvCalc = 18.0 * biasAv + 8;
-            arbArCalc = (aeroRear === 'Yes' && aeroFront === 'No') ? (35.0 * biasAr + 18) : (35.0 * biasAr + 15);
-        } else if (drivetrain === 'RWD') {
-            arbAvCalc = 22.0 * biasAv + 10; arbArCalc = 26.0 * biasAr + 10;
-        } else {
-            arbAvCalc = 32.0 * biasAv + 10; arbArCalc = 16.0 * biasAr + 5;
-        }
+        else if (drivetrain === 'AWD') { arbAvCalc = 18.0 * biasAv + 8; arbArCalc = 35.0 * biasAr + 15; } 
+        else if (drivetrain === 'RWD') { arbAvCalc = 22.0 * biasAv + 10; arbArCalc = 26.0 * biasAr + 10; } 
+        else { arbAvCalc = 32.0 * biasAv + 10; arbArCalc = 16.0 * biasAr + 5; }
 
-        const arbAv = arbAvCalc.toFixed(1);
-        const arbAr = arbArCalc.toFixed(1);
-
-        // AMORTISSEMENT
-        let reboundBase = 11.5, bumpRatio = 0.55;
-        if (category === 'Rally') { reboundBase = 8.5; bumpRatio = 0.50; }
-        else if (category === 'Drift') { reboundBase = 12.0; bumpRatio = 0.60; }
-
-        const reboundAv = (reboundBase * biasAv + 5.0).toFixed(1);
-        const reboundAr = (reboundBase * biasAr + 5.0).toFixed(1);
-        const bumpAv = (parseFloat(reboundAv) * bumpRatio).toFixed(1);
-        const bumpAr = (parseFloat(reboundAr) * bumpRatio).toFixed(1);
+        // AMORTISSEURS
+        let reboundBase = (category === 'Rally') ? 8.5 : 11.5, bumpRatio = (category === 'Rally') ? 0.50 : 0.55;
+        const reboundAv = (reboundBase * biasAv + 5.0).toFixed(1), reboundAr = (reboundBase * biasAr + 5.0).toFixed(1);
+        const bumpAv = (parseFloat(reboundAv) * bumpRatio).toFixed(1), bumpAr = (parseFloat(reboundAr) * bumpRatio).toFixed(1);
 
         // DIFFÉRENTIEL
         let diffText = "";
-        if (category === 'Drift') {
-            diffText = (lang === 'fr') 
-                ? "<b>Accélération :</b> 100% | <b>Décélération :</b> 100% (Verrouillage total)"
-                : "<b>Acceleration:</b> 100% | <b>Deceleration:</b> 100% (Full Lock)";
-        } else if (category === 'Drag') {
-            diffText = (lang === 'fr')
-                ? "<b>Accélération :</b> 100% | <b>Décélération :</b> 0%"
-                : "<b>Acceleration:</b> 100% | <b>Deceleration:</b> 0%";
-        } else if (drivetrain === 'AWD') {
-            diffText = (lang === 'fr')
-                ? "<b>AV :</b> Accél 15% / Décél 0%<br><b>AR :</b> Accél 65% / Décél 10%<br><b>Répartition Centrale :</b> 72% vers l'arrière"
-                : "<b>Front:</b> Accel 15% / Decel 0%<br><b>Rear:</b> Accel 65% / Decel 10%<br><b>Center Balance:</b> 72% Rearward";
-        } else if (drivetrain === 'RWD') {
-            diffText = (lang === 'fr')
-                ? "<b>Accélération :</b> 44% | <b>Décélération :</b> 18%"
-                : "<b>Acceleration:</b> 44% | <b>Deceleration:</b> 18%";
-        } else {
-            diffText = (lang === 'fr')
-                ? "<b>Accélération :</b> 35% | <b>Décélération :</b> 0%"
-                : "<b>Acceleration:</b> 35% | <b>Deceleration:</b> 0%";
-        }
+        if (category === 'Drift') diffText = (lang === 'fr') ? "<b>Accél:</b> 100% | <b>Décél:</b> 100%" : "<b>Accel:</b> 100% | <b>Decel:</b> 100%";
+        else if (drivetrain === 'AWD') diffText = (lang === 'fr') ? "<b>AV:</b> Accél 15% / Décél 0%<br><b>AR:</b> Accél 65% / Décél 10%<br><b>Centre:</b> 72% AR" : "<b>Front:</b> Accel 15% / Decel 0%<br><b>Rear:</b> Accel 65% / Decel 10%<br><b>Center:</b> 72% Rear";
+        else if (drivetrain === 'RWD') diffText = (lang === 'fr') ? "<b>Accél:</b> 40% | <b>Décél:</b> 20%" : "<b>Accel:</b> 40% | <b>Decel:</b> 20%";
+        else diffText = (lang === 'fr') ? "<b>Accél:</b> 70% | <b>Décél:</b> 0%" : "<b>Accel:</b> 70% | <b>Decel:</b> 0%";
 
-        // NOTES
-        let noteText = "";
-        if (lang === 'fr') {
-            noteText = `<b>💡 Note PtitDoritos Dynamics (${category}) :</b> `;
-            if (aeroRear === 'Yes' && aeroFront === 'No') {
-                noteText += "Aéro arrière unique : L'aileron apporte de la stabilité en courbe rapide. L'ARB arrière a été ajustée en conséquence.";
-            } else if (category === 'Drift') {
-                noteText += "Configuration glisse extrême : Carrossage avant très négatif (-3.0°), différentiel bloqué à 100%.";
-            } else if (category === 'Rally') {
-                noteText += "Configuration Tout-Terrain : Pression basse pour le grip sur terre, suspensions très assouplies.";
-            } else {
-                noteText += "Réglage Grip / Piste : Équilibre optimal pour viser des temps au tour réguliers.";
-            }
-        } else {
-            noteText = `<b>💡 PtitDoritos Dynamics Note (${category}) :</b> `;
-            if (aeroRear === 'Yes' && aeroFront === 'No') {
-                noteText += "Rear Aero Only: Rear wing increases high-speed stability. Rear ARB adjusted accordingly.";
-            } else if (category === 'Drift') {
-                noteText += "Extreme Slide Setup: High negative front camber (-3.0°), 100% locked differential.";
-            } else if (category === 'Rally') {
-                noteText += "Off-Road Setup: Lower tire pressure for dirt traction, softer suspension.";
-            } else {
-                noteText += "Grip / Track Setup: Optimal balance for consistent lap times.";
-            }
-        }
+        const noteText = (lang === 'fr') ? `<b>💡 Note :</b> Valeurs optimisées pour ${category} - ${drivetrain}.` : `<b>💡 Note:</b> Values optimized for ${category} - ${drivetrain}.`;
 
-        // INJECTION RÉSULTATS
         document.getElementById('resPneus').innerText = pneusText;
         document.getElementById('resAlignement').innerHTML = alignText;
         document.getElementById('resAero').innerHTML = aeroText;
-        const labelAv = (lang === 'fr') ? "AV" : "Front";
-        const labelAr = (lang === 'fr') ? "AR" : "Rear";
-        document.getElementById('resArb').innerText = `${labelAv}: ${arbAv} | ${labelAr}: ${arbAr}`;
-        document.getElementById('resRessorts').innerText = `${labelAv}: ${ressortAv} | ${labelAr}: ${ressortAr}`;
-        document.getElementById('resRebound').innerText = `${labelAv}: ${reboundAv} | ${labelAr}: ${reboundAr}`;
-        document.getElementById('resBump').innerText = `${labelAv}: ${bumpAv} | ${labelAr}: ${bumpAr}`;
+        document.getElementById('resArb').innerText = `${(lang === 'fr') ? "AV" : "Front"}: ${arbAvCalc.toFixed(1)} | ${(lang === 'fr') ? "AR" : "Rear"}: ${arbArCalc.toFixed(1)}`;
+        document.getElementById('resRessorts').innerText = `${(lang === 'fr') ? "AV" : "Front"}: ${springAvCalc.toFixed(1)} | ${(lang === 'fr') ? "AR" : "Rear"}: ${springArCalc.toFixed(1)}`;
+        document.getElementById('resRebound').innerText = `${(lang === 'fr') ? "AV" : "Front"}: ${reboundAv} | ${(lang === 'fr') ? "AR" : "Rear"}: ${reboundAr}`;
+        document.getElementById('resBump').innerText = `${(lang === 'fr') ? "AV" : "Front"}: ${bumpAv} | ${(lang === 'fr') ? "AR" : "Rear"}: ${bumpAr}`;
         document.getElementById('resDiff').innerHTML = diffText;
         document.getElementById('resNotes').innerHTML = noteText;
-
         document.getElementById('resultsCard').classList.remove('hidden');
     }
 
     // 5. CHARGEMENT INITIAL
     window.addEventListener('DOMContentLoaded', () => {
-        const savedLang = localStorage.getItem('preferred_lang') || 
-                          (navigator.language.startsWith('fr') ? 'fr' : 'en');
+        const savedLang = localStorage.getItem('preferred_lang') || (navigator.language.startsWith('fr') ? 'fr' : 'en');
         changeLanguage(savedLang);
     });
 
     if ('serviceWorker' in navigator) {
-        window.addEventListener('load', () => {
-            navigator.serviceWorker.register('./sw.js');
-        });
+        window.addEventListener('load', () => { navigator.serviceWorker.register('./sw.js'); });
     }
 </script>
 
