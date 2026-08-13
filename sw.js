@@ -1,5 +1,5 @@
 // Version du cache (passée en v2 pour forcer la mise à jour)
-const CACHE_NAME = 'ptitdoritos-v2';
+const CACHE_NAME = 'ptitdoritos-v3';
 
 // Liste des fichiers à mettre en mémoire hors-ligne
 const ASSETS = [
